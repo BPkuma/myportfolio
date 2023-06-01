@@ -2,7 +2,7 @@
     <div
         class="
         text-7xl text-center mt-6 p-5 font-bold
-        tracking-tight bg-gradient-to-r from-blue-100 via-blue-500
+        tracking-tight bg-gradient-to-r from-blue-200 via-blue-600
         to-blue-900 bg-clip-text text-transparent
         ">
     My Port Folio

@@ -14,22 +14,22 @@
         ">
             <a href="{{ url('/fizzbuzz') }}"
                 class="
-                bg-blue-700 rounded-lg p-5
-                hover:bg-blue-500 transition duration-300
+                bg-lime-700 rounded-lg p-5
+                hover:bg-lime-500 transition duration-300
                 ">
             問題を作る
             </a>
             <a href="{{ url('/summarize') }}"
                 class="
-                bg-blue-700 rounded-lg p-5
-                hover:bg-blue-500 transition duration-300
+                bg-lime-700 rounded-lg p-5
+                hover:bg-lime-500 transition duration-300
                 ">
             ゲームで遊ぶ
             </a>
             <a href="{{ url('/typing') }}"
                 class="
-                bg-blue-700 rounded-lg p-5
-                hover:bg-blue-500 transition duration-300
+                bg-lime-700 rounded-lg p-5
+                hover:bg-lime-500 transition duration-300
                 ">
             設定
             </a>
