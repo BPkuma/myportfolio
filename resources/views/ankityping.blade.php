@@ -1,11 +1,10 @@
 <x-guest-layout>
     <div
         class="
-        text-7xl text-center mt-6 p-5 font-bold
-        tracking-tight bg-gradient-to-r from-green-500 via-blue-500
-        to-pink-500 bg-clip-text text-transparent
+        text-7xl text-center mt-6 p-5 text-bold
+        font-body md:メイリオ:
         ">
-    Ankiタイピング
+    Anki Typing
     </div>
 
     <div class="
