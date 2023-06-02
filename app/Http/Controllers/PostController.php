@@ -21,6 +21,11 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        $inputs = $request->validate([
+            'answer'=>'required|max:255|regex:/\A([a-zA-Z0-9]{8,})+\z/u',
+            'question'=>'required|max:1000',
+            'image'=>'image|max:1024'
+        ]);
         $post = new Post();
         $post->answer = $request->answer;
         $post->question = $request->question;
