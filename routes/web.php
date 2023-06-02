@@ -20,5 +20,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/typing', function () {
     return view('ankityping');
 });
+Route::get('/typing/game', function(){
+    return view('game');
+});
 
 require __DIR__.'/auth.php';
