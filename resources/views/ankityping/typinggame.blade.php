@@ -140,7 +140,6 @@
                 <script>
                 'use strict';
                 {
-                const data = ;
                 const matters = [
                 [
                     'alert',

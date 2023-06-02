@@ -30,4 +30,8 @@ Route::get('/typing/createQuestion', function(){
     return view('ankityping.createQuestion');
 });
 
+Route::get('/konnakanji', function(){
+    return view('konnakanji');
+});
+
 require __DIR__.'/auth.php';

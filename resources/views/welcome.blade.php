@@ -10,7 +10,7 @@
     </div>
 
     <div class="
-        mt-14 grid grid-cols-3 gap-5
+        mt-6 grid grid-cols-3 gap-5
         text-xl text-center text-neutral-50 mx-5
         ">
         <a href="{{ url('/fizzbuzz') }}"
@@ -34,21 +34,21 @@
             ">
         Ankiタイピング
         </a>
-        <a href="{{ url('/typing') }}"
+        <a href="{{ url('/konnakanji') }}"
             class="
             bg-blue-700 rounded-lg p-5
             hover:bg-blue-500 transition duration-1000
             ">
         こんな漢字
         </a>
-        <a href="{{ url('/typing') }}"
+        <a href="{{ url('/') }}"
             class="
             bg-gray-700 rounded-lg p-5
             hover:bg-gray-500 transition duration-1000
             ">
         準備中...
         </a>
-        <a href="{{ url('/typing') }}"
+        <a href="{{ url('/') }}"
             class="
             bg-gray-700 rounded-lg p-5
             hover:bg-gray-500 transition duration-1000
