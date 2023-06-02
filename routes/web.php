@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+
+Route::resource('post', PostController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,10 +21,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/typing', function () {
-    return view('ankityping');
+    return view('ankityping.ankityping');
 });
 Route::get('/typing/game', function(){
-    return view('game');
+    return view('ankityping.typinggame');
+});
+Route::get('/typing/createQuestion', function(){
+    return view('ankityping.createQuestion');
 });
 
 require __DIR__.'/auth.php';
