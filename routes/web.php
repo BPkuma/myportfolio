@@ -4,11 +4,17 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
-Route::resource('post', PostController::class);
+Route::get('post', [PostController::class, 'index'])->name('post.index');
+Route::get('post/create', [PostController::class, 'create'])->name('post.create');
+Route::post('post', [PostController::class, 'store'])->name('post.store');
+Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
+Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -22,16 +28,16 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/typing', function () {
     return view('ankityping.ankityping');
-});
+})->name('typing');
 Route::get('/typing/game', function(){
     return view('ankityping.typinggame');
-});
-Route::get('/typing/createQuestion', function(){
-    return view('ankityping.createQuestion');
-});
+})->name('typing.game');
+// Route::get('/typing/createQuestion', function(){
+//     return view('ankityping.createQuestion');
+// });
 
 Route::get('/konnakanji', function(){
     return view('konnakanji');
-});
+})->name('konnakanji');
 
 require __DIR__.'/auth.php';

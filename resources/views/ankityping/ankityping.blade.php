@@ -12,7 +12,7 @@
         text-xl text-center text-neutral-50
         mx-5
         ">
-            <a href="{{ url('/typing/createQuestion') }}"
+            <a href="{{ url('/post') }}"
                 class="
                 bg-lime-700 rounded-lg p-5
                 hover:bg-lime-500 transition duration-300

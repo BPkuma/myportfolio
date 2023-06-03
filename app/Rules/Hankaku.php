@@ -14,6 +14,11 @@ class Hankaku implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        //
+        
+    }
+
+    public function message()
+    {
+
     }
 }
