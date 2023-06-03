@@ -136,80 +136,11 @@
                 </div>
                 <div id="hint"></div>
                 <div id="message" class="fadein">エンターを押すと開始します</div>
-
                 <script>
-                'use strict';
-                {
-                const matters = [
-                [
-                    'alert',
-                    'ダイアログに引数指定の文字列を表示する',
-                ],
-                [
-                    'querySelector',
-                    '引数にCSSセレクタ形式指定で条件と一致したHTML要素の最初のひとつを返す',
-                ],
-                [
-                    'console.log',
-                    'コンソールに引数指定の値を表示する',
-                ],
-                [
-                    'setTimeout',
-                    '指定秒数後に引数指定の関数を実行する',
-                ],
-                [
-                    'Math.random',
-                    '0以上1未満のランダムな浮動小数を返す',
-                ],
-                [
-                    'Math.floor',
-                    '引数指定した数値の小数点以下を切り捨てて返す',
-                ],
-                [
-                    'location.reload',
-                    'ページをリロードする',
-                ],
-                [
-                    'location.replace',
-                    '指定したページへ移動する',
-                ],
-                [
-                    'location.href',
-                    '現在のページのURLを返す',
-                ],
-                [
-                    'length',
-                    '文字列の長さを求めるメソッド\n配列の要素数にも応用可能',
-                ],
-                [
-                    'substring',
-                    '文字列に対して、引数指定した番号の文字を返すメソッド 負の値を指定すると0番目とみなされる',
-                ],
-                [
-                    'slice',
-                    '文字列や配列に対して、引数指定した位置の要素を切り抜くメソッド\n元の文字列からは要素が無くなる',
-                ],
-                [
-                    'getFullYear',
-                    '日付オブジェクトの年を4桁の整数で返す',
-                ],
-                [
-                    'toFixed',
-                    '数値型の値に対して、引数指定した固定小数点表記の文字列に変換する',
-                ],
-                [
-                    'replace',
-                    '文字列に対して、第1引数の文字列を第2引数の文字列に置換するメソッド',
-                ],
-                [
-                    'split',
-                    '文字列に対して、引数で指定した区切り文字で分割し、分割された文字列を要素とする配列を生成するメソッド\n引数に空文字を指定することで単語を分解して配列化できる',
-                ],
-                [
-                    'map',
-                    '配列に対して、配列の各要素一つずつに引数指定したコールバック関数を実行し、その結果を新しい配列として返すメソッド\n元の配列は非破壊で残るため、メソッドの返り値は何らかの変数に代入する必要がある',
-                ],
-                    ];
+                    'use strict';
+                    {
+                    const matters = {!! json_encode($posts) !!};
+                    console.log(matters);
                     let checkTexts = [];
                     let container = document.getElementById('container');
                     let answer = document.getElementById('answer');
@@ -218,7 +149,7 @@
                     let progParent = document.getElementById('progress');
                     let prog = document.createElement('progress');
                     let message = document.getElementById('message');
-                    const amount = 3;
+                    const amount = matters.length;
                     let hit = 0;
                     let count = 0;
                     let state = false;
@@ -234,18 +165,18 @@
                     function createText() {
                     let rand = Math.floor(Math.random() * matters.length);
                     let matter = matters.splice(rand, 1)[0];
-
+                    console.log(matter);
                     progParent.appendChild(prog);
                     prog.setAttribute("max", amount);
                     prog.setAttribute("value", count);
 
                     answer.textContent = '';
-                    question.innerText = matter[1];
+                    question.innerText = matter.question;
 
                     count++;
 
                     // !..ここが一番のキモ 正解の文字列を分解して表示は＿でもvalueは正解の文字列というspan要素を作ってanswerノードの子要素に設置している
-                    checkTexts = matter[0].split('').map(value => {
+                    checkTexts = matter.answer.split('').map(value => {
                         let span = document.createElement('span');
                         span.textContent = '_';
                         answer.appendChild(span);

@@ -12,7 +12,7 @@
                 @csrf
                 <div class="md:flex items-center mt-8">
                     <div class="w-full flex flex-col">
-                    <label for="answaer" class="font-semibold leading-none mt-4">
+                    <label for="answaer" class="leading-none mt-4">
                         タイピングする文字（半角アルファベットのみ）
                     </label>
                     <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer')}}" placeholder="answer">
@@ -20,18 +20,18 @@
                 </div>
 
                 <div class="w-full flex flex-col">
-                    <label for="question" class="font-semibold leading-none mt-4">
+                    <label for="question" class="leading-none mt-4">
                         問題文
                     </label>
                     <textarea name="question" class="w-auto py-2 border border-gray-300 rounded-md" id="question" cols="30" rows="3">{{old('question')}}</textarea>
                 </div>
 
                 <div class="w-full flex flex-col">
-                    <label for="image" class="font-semibold leading-none mt-4">
+                    <label for="image" class="leading-none mt-4">
                         画像(1MBまで)
                     </label>
                     <div>
-                    <input id="image" type="file" name="image">
+                    <input id="image" type="file" name="image" class="text-base mb-4">
                     </div>
                 </div>
 
@@ -49,10 +49,10 @@
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
                     <tr>
-                    <th scope="col" class="px-6 py-3 text-left text-base font-medium text-gray-800 uppercase">回答</th>
-                    <th scope="col" class="px-6 py-3 text-left text-base font-medium text-gray-800 uppercase">問題文</th>
-                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"></th>
-                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase"></th>
+                    <th scope="col" class="px-6 py-3 text-cetner text-mb font-normal">回答</th>
+                    <th scope="col" class="px-6 py-3 text-center text-base font-normal">問題文</th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-normal"></th>
+                    <th scope="col" class="px-6 py-3 text-right text-xs font-normal"></th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">

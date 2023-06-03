@@ -26,15 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/typing/game', [PostController::class, 'typing'])->name('tayping.game');
+
 Route::get('/typing', function () {
     return view('ankityping.ankityping');
 })->name('typing');
-Route::get('/typing/game', function(){
-    return view('ankityping.typinggame');
-})->name('typing.game');
-// Route::get('/typing/createQuestion', function(){
-//     return view('ankityping.createQuestion');
-// });
 
 Route::get('/konnakanji', function(){
     return view('konnakanji');
