@@ -85,7 +85,10 @@
                     </tr>
                     @endforeach
                 </tbody>
-                </table>
+            </table>
+
+                {{$posts->links('vendor.pagination.tailwind2')}}
+
             </div>
             </div>
         </div>
