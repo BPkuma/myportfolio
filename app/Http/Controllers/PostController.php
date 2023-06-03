@@ -52,13 +52,31 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        //
+        return view('ankityping.editquestion', compact('post'));
     }
 
 
     public function update(Request $request, Post $post)
     {
-        //
+        $inputs=$request->validate([
+            'answer'=>'required|max:255',
+            'question'=>'required|max:1000',
+            'image'=>'image|max:1024'
+        ]);
+
+        $post->answer=$inputs['answer'];
+        $post->question=$inputs['question'];
+
+        if(request('image')){
+            $original=request()->file('image')->getClientOriginalName();
+            $name=date('Ymd_His').'_'.$original;
+            $file=request()->file('image')->move('storage/images', $name);
+            $post->image=$name;
+        }
+
+        $post->save();
+
+        return redirect()->route('post.index', $post)->with('message', '投稿を更新しました');
     }
 
 

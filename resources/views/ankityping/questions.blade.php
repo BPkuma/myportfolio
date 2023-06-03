@@ -28,14 +28,14 @@
 
                 <div class="w-full flex flex-col">
                     <label for="image" class="font-semibold leading-none mt-4">
-                        画像
+                        画像(1MBまで)
                     </label>
                     <div>
                     <input id="image" type="file" name="image">
                     </div>
                 </div>
 
-                <x-primary-button class="mt-2 mb-2 bg-lime-700">
+                <x-primary-button class="mt-2 mb-6 bg-lime-700">
                     保存する
                 </x-primary-button>
             </form>
@@ -44,7 +44,7 @@
     <hr>
     <div class="flex flex-col">
         <div class="-m-1.5 overflow-x-auto">
-            <div class="p-1.5 min-w-full inline-block align-middle">
+            <div class="p-1.5 w-full inline-block align-middle">
             <div class="overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
@@ -58,10 +58,10 @@
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                     @foreach ($posts as $post)
                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-300">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-500">
+                        <td class="px-6 py-4 whitespace-normal text-sm font-medium text-gray-800 dark:text-gray-500">
                             <div>{{$post->answer}}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-500">
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-800 dark:text-gray-500">
                             <div>{{$post->question}}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-800 dark:text-gray-200">
@@ -75,10 +75,10 @@
                             </form>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="{{route('post.edit',['$post->id'])}}"
+                            <a href="{{route('post.edit',$post)}}"
                                 class="text-blue-500 hover:text-blue-700">
                                 @csrf
-                                更新
+                                編集
                                 </form>
                             </a>
                         </td>
