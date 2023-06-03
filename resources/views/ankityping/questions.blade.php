@@ -10,10 +10,10 @@
         <div class="mx-4 sm:px-8">
             <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                 @csrf
-                <div class="md:flex items-center mt-8">
+                <div class="md:flex items-center mt-2">
                     <div class="w-full flex flex-col">
                     <label for="answaer" class="leading-none mt-4">
-                        タイピングする文字（半角アルファベットのみ）
+                        タイピングする文字（半角英数字のみ）
                     </label>
                     <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer')}}" placeholder="answer" autofocus>
                     </div>
@@ -27,15 +27,13 @@
                 </div>
 
                 <div class="w-full flex flex-col">
-                    <label for="image" class="leading-none mt-4">
-                        画像(1MBまで)
-                    </label>
-                    <div>
-                    <input id="image" type="file" name="image" class="text-base mb-4">
-                    </div>
+                    <label for="image" class="leading-none mt-4">画像ファイル</label>
+                        <input id="image" type="file" name="image" class="leading-none block w-full border border-gray-300 rounded-md text-sm hover:bg-gray-300
+                        file:bg-transparent file:border-0
+                        file:bg-gray-200 file:mr-4 file:py-3 file:px-4">
                 </div>
 
-                <x-primary-button class="mt-2 mb-6 bg-lime-700">
+                <x-primary-button class="mt-4 mb-4 bg-lime-700">
                     保存する
                 </x-primary-button>
             </form>
@@ -63,6 +61,9 @@
                         </td>
                         <td class="px-6 py-4 whitespace-normal text-sm text-gray-800 dark:text-gray-500">
                             <div>{{$post->question}}</div>
+                        </td>
+                        <td>
+
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-800 dark:text-gray-200">
                             <form method="post" action="{{route('post.destroy', $post)}}">
