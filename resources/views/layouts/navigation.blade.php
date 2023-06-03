@@ -6,21 +6,41 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ url('/') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <img src="{{asset('/homelogo.png')}}" alt="home" style="max-height:30px">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:ml-4 sm:flex">
+                    <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
+                        {{ __('fizzbuzzクエスト') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
+                        {{ __('JSまとめ') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('typing')" :active="request()->routeIs('typing.game')">
+                        {{ __('ankiタイピング') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('konnakanji')" :active="request()->routeIs('konnakanji')">
+                        {{ __('こんな漢字') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('ログイン') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('logout')"
                     onclick="event.preventDefault();
                                 this.closest('form').submit();">
-                {{ __('ログアウト') }}
+                        {{ __('ログアウト') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -90,6 +110,18 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('welcome')">
+                    {{ __('fizzbuzzクエスト') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('welcome')">
+                    {{ __('JSまとめ') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('typing')">
+                    {{ __('ankiタイピング') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('konnakanji')">
+                    {{ __('こんな漢字') }}
+                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>

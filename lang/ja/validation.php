@@ -246,6 +246,9 @@ return [
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
+        'answer' => 'タイピングする文字',
+        'question' => '問題文',
+        'hankaku' => ':attribute は半角英数字で入力してください',
     ],
 
 ];
