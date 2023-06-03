@@ -36,4 +36,8 @@ Route::get('/konnakanji', function(){
     return view('konnakanji');
 })->name('konnakanji');
 
+Route::get('/junbanlist', function(){
+    return view('junbanlist');
+})->name('junbanlist');
+
 require __DIR__.'/auth.php';

@@ -41,12 +41,12 @@
             ">
         こんな漢字
         </a>
-        <a href="{{ url('/') }}"
+        <a href="{{ url('/junbanlist') }}"
             class="
-            bg-gray-700 rounded-lg p-5
-            hover:bg-gray-500 transition duration-1000
+            bg-blue-700 rounded-lg p-5
+            hover:bg-blue-500 transition duration-1000
             ">
-        準備中...
+        順番リスト
         </a>
         <a href="{{ url('/') }}"
             class="
