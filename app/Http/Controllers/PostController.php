@@ -20,6 +20,7 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         $user = auth()->user();
+        // ddd($posts);
         return view('ankityping.questions', compact('posts', 'user'));
     }
 

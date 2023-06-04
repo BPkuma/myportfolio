@@ -47,8 +47,9 @@
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
                     <tr>
-                    <th scope="col" class="px-6 py-3 text-cetner text-mb font-normal">回答</th>
-                    <th scope="col" class="px-6 py-3 text-center text-base font-normal">問題文</th>
+                    <th scope="col" class="px-6 py-3 text-center text-mb font-normal"></th>
+                    <th scope="col" class="px-6 py-3 text-left text-mb font-normal">回答</th>
+                    <th scope="col" class="px-6 py-3 text-left text-base font-normal">問題文</th>
                     <th scope="col" class="px-6 py-3 text-right text-xs font-normal"></th>
                     <th scope="col" class="px-6 py-3 text-right text-xs font-normal"></th>
                     </tr>
@@ -56,15 +57,14 @@
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                     @foreach ($posts as $post)
                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-300">
+                        <td class="w-2 text-center "><input type="checkbox" @if ($post->is_enabled) checked @endif></td>
                         <td class="px-6 py-4 whitespace-normal text-sm font-medium text-gray-800 dark:text-gray-500">
                             <div>{{$post->answer}}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-normal text-sm text-gray-800 dark:text-gray-500">
                             <div>{{$post->question}}</div>
                         </td>
-                        <td>
 
-                        </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-800 dark:text-gray-200">
                             <form method="post" action="{{route('post.destroy', $post)}}">
                                 @csrf
@@ -94,4 +94,9 @@
             </div>
         </div>
     </div>
+
+    <script>
+        'use strict';
+        console.log('hello world');
+    </script>
 </x-app-layout>
