@@ -15,11 +15,11 @@
         @vite([
             'resources/css/app.css', 
             'resources/js/app.js', 
-            'resources/css/index.css', 
-            'resources/js/index.js',
-            'resources/js/jquery-3.6.4.min.js',            
+            'resources/css/summarize.css', 
+            'resources/js/summarize.js',
+            'resources/js/jquery-3.6.4.min.js'/* ,            
             'resources/js/prism.css',            
-            'resources/js/prism.js'            
+            'resources/js/prism.js'            */ 
             ])
     </head>
     <body class="font-body antialiased">
