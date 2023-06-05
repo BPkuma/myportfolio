@@ -137,7 +137,6 @@
                 'use strict';
                 {
                 const matters = {!! json_encode($posts) !!};
-                console.log(matters);
                 let checkTexts = [];
                 let container = document.getElementById('container');
                 let answer = document.getElementById('answer');

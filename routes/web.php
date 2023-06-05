@@ -26,11 +26,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/typing/game', [PostController::class, 'typing'])->name('tayping.game');
+Route::post('/typing/game/{amount}', [PostController::class, 'typing'])->name('typing.game');
 
-Route::get('/typing', function () {
-    return view('ankityping.ankityping');
-})->name('typing');
+Route::get('/typing', [PostController::class, 'showConsole'])->name('typing');
 
 Route::get('/konnakanji', function(){
     return view('konnakanji');
