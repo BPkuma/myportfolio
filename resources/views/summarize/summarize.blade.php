@@ -1,6 +1,6 @@
 <x-app-layout>
-   <slot>
-    {{-- タイトル --}}
+   <!-- <slot> -->
+    <!-- タイトル -->
     <div class="bg-black h-screen text-white">
         <h1 class="text-center font-medium text-7xl pt-5">
             JavaScript<br>
@@ -8,13 +8,14 @@
             おさらい
             </span>
         </h1>
-        {{-- 選択肢・ステータス --}}
+        
+        <!-- 選択肢/ステータス -->
         <div>
-            {{-- 選択肢 --}}
+            <!-- 選択肢 -->
             <ul class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5">
                 <li id="summarize" class="text-white cursor-pointer">
                     <span id="choose1">▶</span>
-                    &nbsp;&nbsp;おさらいする
+                    &nbsp;&nbsp;<a href="countdown">おさらいする</a>
                 </li>
                 <li id="state" class="text-white cursor-pointer">
                     <span id="choose2" class="hidden">▶</span>
@@ -25,22 +26,22 @@
                     &nbsp;&nbsp;にげる
                 </li>
             </ul>
-            {{-- ステータス --}}
+            <!-- ステータス -->
             <div id="state_data" class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5 hidden">                
-                <p class="text-white">
+                <p>
                 ななし
                 </p>
-                <p class="text-white">
+                <p>
                 レベル　0
                 </p>
             </div>
-            {{-- 逃げたとき --}}
+            <!-- 逃げたとき -->
             <div id="run_data" class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5 hidden">                
-                <p class="text-white">
+                <p>
                 しかし、まわりこまれた！！！
                 </p>                
             </div>
         </div>
     </div>
-   </slot> 
+   <!-- </slot> --> 
 </x-app-layout>
