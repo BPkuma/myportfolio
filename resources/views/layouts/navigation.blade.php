@@ -17,8 +17,8 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
-                        {{ __('JSまとめ') }}
+                    <x-nav-link :href="route('summarize')" :active="request()->routeIs('summarize.summarize')">
+                        {{ __('JSおさらい') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex">

@@ -1,5 +1,5 @@
 <x-app-layout>
-   <!-- <slot> -->
+   <slot>
     <!-- タイトル -->
     <div class="bg-black h-screen text-white">
         <h1 class="text-center font-medium text-7xl pt-5">
@@ -43,5 +43,5 @@
             </div>
         </div>
     </div>
-   <!-- </slot> --> 
+   </slot>
 </x-app-layout>
