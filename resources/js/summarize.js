@@ -21,6 +21,7 @@ const run = document.getElementById('run');
 
 //ステータスの中身を定数state_dataに代入
 const state_data = document.getElementById('state_data');
+const run_data = document.getElementById('run_data');
 
 //マウスオーバーされた箇所の▶カーソルからhiddenを取り除き、
 //それ以外はhiddenを追加するtoggleHidden()作成
