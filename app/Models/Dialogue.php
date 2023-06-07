@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Dialogue extends Model
 {
     use HasFactory;
+
+    //ホワイトリスト形式で保存可能なカラムを指定
+    protected $fillable = ['order', 'dialogue'];
+
 }
