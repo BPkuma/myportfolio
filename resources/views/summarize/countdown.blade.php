@@ -60,12 +60,15 @@
             <!--ジャスコセリフ-->
             <div class="talk">           
                 <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
-                        <p>
-                            ジャスコ「&nbsp;一緒にJavaScriptのおさらいをしていきましょう！」
-                            <br><span class="confirm flex justify-center">▼</span>
-                        </p>
+                    <!--Dialoguesテーブルからセリフ取得-->
+                    @foreach($dialogues as $dialogue)
+                        <p>{{$dialogue->dialogue}}</p>
+                        <br><span class="confirm flex justify-center">▼</span>
+                    @endforeach
                 </div>
             </div>
+
+            
             
         </div>
     </slot>
