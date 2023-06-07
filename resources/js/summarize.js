@@ -21,6 +21,8 @@ const run = document.getElementById('run');
 
 //ステータスの中身を定数state_dataに代入
 const state_data = document.getElementById('state_data');
+
+//「にげる」クリック時の中身を定数run_dataに代入
 const run_data = document.getElementById('run_data');
 
 //マウスオーバーされた箇所の▶カーソルからhiddenを取り除き、
@@ -58,7 +60,7 @@ run.addEventListener('click', function() {
 });
 }
 
-//カウントダウンタイマーページ////////////////////////////////////////
+//カウントダウンタイマーのページ////////////////////////////////////////
 
 //spanタグのidを定数todayに代入
 const today = document.getElementById('today');
@@ -126,6 +128,8 @@ function refresh() {
 
 //recalc()実行
 recalc();
+
+//▼#
 
 
 });

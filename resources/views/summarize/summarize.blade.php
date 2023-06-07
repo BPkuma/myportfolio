@@ -29,7 +29,7 @@
             <!-- ステータス -->
             <div id="state_data" class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5 hidden">                
                 <p>
-                ななし
+                {{Auth::user()->name ?? "ななし"}}
                 </p>
                 <p>
                 レベル&nbsp;0

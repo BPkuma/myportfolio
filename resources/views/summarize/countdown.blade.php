@@ -3,10 +3,10 @@
         <!-- カウントダウンタイマーのページ -->
         <div class="bg-black h-screen text-white">
             <!--もくじ-->
-            <div class="pt-24">         
+            <div class="pt-2 float-right">         
                 <div id="state_data" class="corner p-4 border-2 border-white w-6/12 ml-5"> 
                     <div>
-                        <h2>もくじ</h2>
+                        <h2>もくじ&nbsp;&nbsp;&nbsp;&nbsp;<span id="open">▼</span></h2>
                     </div>
                     <nav>
                         <ul>
@@ -32,7 +32,24 @@
                     </div>
                 </div>
             </div>
-            
+
+            <!--ジャスコの画像-->
+            <div class="mt-5">
+                <img  class="w-1/12" src="{{ asset('images/jasco.png') }}" alt="ジャスコ">
+            </div>
+
+            <!--ジャスコセリフ-->
+            <div class="pt-5">           
+                <div id="state_data" class="corner p-4 border-2 border-white w-6/12 ml-5">                
+                    <div class>
+                        <p>
+                            こんにちわ、ジャスコです。
+                            <br><span class="flex justify-center">▼</span>
+                        </p>
+                         
+                    </div>
+                </div>
+            </div>
             
         </div>
     </slot>
