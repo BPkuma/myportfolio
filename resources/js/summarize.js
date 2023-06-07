@@ -108,8 +108,13 @@ function countDown(due) {
         const counter = countDown(goal);
         //テンプレート文字列を作成し、定数timeに代入
         const time = `${counter[1]}時間${counter[2]}分${String(counter[3]).padStart(2, '0')}秒`;
+        //#timerを定数timerに代入
+        const timer = document.getElementById('timer');
         //カウントダウンタイマーサンプル画面表示
-        document.getElementById('timer').textContent = time;
+        if (timer) {
+        timer.textContent = time;
+        console.log('timer');
+        }
         //refresh()呼び出し
         refresh();
     }
