@@ -12,7 +12,15 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite([
+            'resources/css/app.css', 
+            'resources/js/app.js', 
+            'resources/css/summarize.css', 
+            'resources/js/summarize.js',
+            'resources/js/jquery-3.6.4.min.js'/* ,            
+            'resources/js/prism.css',            
+            'resources/js/prism.js'            */ 
+            ])
     </head>
     <body class="font-body antialiased">
         <div class="min-h-screen bg-gray-100">

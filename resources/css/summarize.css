@@ -1,0 +1,6 @@
+@charset 'UTF-8';
+
+/*枠を角を丸くする*/
+.corner {
+  border-radius: 10px;
+}
