@@ -115,7 +115,6 @@ function countDown(due) {
         //カウントダウンタイマーサンプル画面表示
         if (timer) {
         timer.textContent = time;
-        console.log('timer');
         }
         //refresh()呼び出し
         refresh();
@@ -129,7 +128,17 @@ function refresh() {
 //recalc()実行
 recalc();
 
-//▼#
+//jQueryでセリフ表示変更/////////////////////////////////////
+$(document).ready(function(){
+    $('.confirm').on('click', function(){
+        //クリックされた▼confirmの親の親要素にhidden追加
+        $(this).parent().parent().addClass('hidden');
+        //
+        $(this).closest('.talk').next('.talk').children().first().removeClass('hidden');
+    });
+});
+
+
 
 
 });

@@ -4,7 +4,7 @@
         <div class="bg-black h-screen text-white">
             <!--もくじ-->
             <div class="pt-2 float-right">         
-                <div id="state_data" class="corner p-4 border-2 border-white w-6/12 ml-5"> 
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5"> 
                     <div>
                         <h2>もくじ&nbsp;&nbsp;&nbsp;&nbsp;<span id="open">▼</span></h2>
                     </div>
@@ -22,12 +22,11 @@
             </div>
             <!-- カウントダウンタイマー・サンプル表示 -->
             <div class="pt-24">           
-                <div id="state_data" class="corner p-4 border-2 border-white w-6/12 ml-5">                
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5">                
                     <div class>
                         <p><span id="today"></span>は
                         </p>
                         <p>あと<span id="timer"></span> で終わります。
-                            <br><span class="flex justify-center">▼</span>
                         </p> 
                     </div>
                 </div>
@@ -39,15 +38,32 @@
             </div>
 
             <!--ジャスコセリフ-->
-            <div class="pt-5">           
-                <div id="state_data" class="corner p-4 border-2 border-white w-6/12 ml-5">                
-                    <div class>
+            <div class="pt-5 talk">           
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5">                
+                    <p>
+                        ジャスコ「&nbsp;{{Auth::user()->name ?? "ななし"}}&nbsp;さま
+                        <br>&nbsp;JavaScriptおさらいのページへようこそ。」
+                        <br><span class="confirm flex justify-center">▼</span>
+                    </p>                         
+                </div>
+            </div>
+            <!--ジャスコセリフ-->
+            <div class="talk">           
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
                         <p>
-                            こんにちわ、ジャスコです。
-                            <br><span class="flex justify-center">▼</span>
+                            ジャスコ「わたしは&nbsp;ジャスコ&nbsp;。
+                            <br>伝説の&nbsp;{{Auth::user()->name ?? "ななし"}}&nbsp;さま&nbsp;をお待ちしてました。」
+                            <br><span class="confirm flex justify-center">▼</span>
                         </p>
-                         
-                    </div>
+                </div>
+            </div>
+            <!--ジャスコセリフ-->
+            <div class="talk">           
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
+                        <p>
+                            ジャスコ「&nbsp;一緒にJavaScriptのおさらいをしていきましょう！」
+                            <br><span class="confirm flex justify-center">▼</span>
+                        </p>
                 </div>
             </div>
             
