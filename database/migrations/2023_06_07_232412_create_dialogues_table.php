@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dialogues', function (Blueprint $table) {
             $table->id();
             $table->integer('order');
-            $table->text('dialgue');
+            $table->text('dialogue');
             $table->timestamps();
         });
     }
