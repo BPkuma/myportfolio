@@ -72,7 +72,7 @@
                 <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
                     <!--Dialoguesテーブルからセリフ取得-->
                     @foreach($dialogues as $dialogue)
-                        <p>{{$dialogue->dialogue}}</p>
+                        <p>{{$dialogue->talk}}</p>
                         <br><span class="confirm flex justify-center">▼</span>
                     @endforeach
                 </div>
