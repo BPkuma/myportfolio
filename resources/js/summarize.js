@@ -82,9 +82,7 @@ goal.setMinutes(59);
 goal.setSeconds(59);
 
 //テンプレート文字列を表示
-if(today) {
 today.textContent = `${month + 1}/${day} (${week})`;
-}
 
 //本日の残り時間を計算し、配列を返すcountDown()作成
 //[日、時、分、秒]を定数countに代入
@@ -105,28 +103,19 @@ function countDown(due) {
 
 //countDown()を呼び出して定数counterに代入、テンプレート文字列を作成する
 //recalc()作成
-    function recalc() {
-        //countDown()を実行し、定数counterに代入
-        const counter = countDown(goal);
-        //テンプレート文字列を作成し、定数timeに代入
-        const time = `${counter[1]}時間${counter[2]}分${String(counter[3]).padStart(2, '0')}秒`;
-        //#timerを定数timerに代入
-        const timer = document.getElementById('timer');
-        //カウントダウンタイマーサンプル画面表示
-        if (timer) {
-        timer.textContent = time;
-        }
-        //refresh()呼び出し
-        refresh();
-    }
-
-//1秒後にrecalc()を実行するrefresh()作成
-function refresh() {
-    setTimeout(recalc, 1000);
+function recalc() {
+    //countDown()を実行し、定数counterに代入
+    const counter = countDown(goal);
+    //テンプレート文字列を作成し、定数timeに代入
+    const time = `${counter[1]}時間${counter[2]}分${String(counter[3]).padStart(2, '0')}秒`;
+    //#timerを定数timerに代入
+    const timer = document.getElementById('timer');
+    //カウントダウンタイマーサンプル画面表示
+    timer.textContent = time;
 }
 
-//recalc()実行
-recalc();
+//recalc()を1秒ごとに繰り返し実行
+setInterval(recalc, 1000);
 
 //jQueryでセリフ表示変更/////////////////////////////////////
 $(document).ready(function(){
@@ -139,27 +128,26 @@ $(document).ready(function(){
 });
 
 //画像をアニメっぽく/////////////////////////////////////////
-//画像を定数imagesに代入
-const images = document.querySelectorAll('.images img');
-console.log(images);
-const index = 0;
+//全ての画像を指定する用の変数iに0を代入
+let i = 0;
+//特定の画像を指定する用の変数indexに0を代入
+let index = 0;
 
-/* function ShowImage() {
-    for (let i = 0; i < images.length; i++) {
+//画像を順番に表示させるShowImage()作成
+function ShowImage() {
+    //全ての画像を取得し、定数imagesに代入
+    const images = document.querySelectorAll('.images img');    
+    //全ての画像にhidden追加
+    for (i = 0; i < images.length; i++) {
         images[i].classList.add('hidden');
-    } */
-    /* if(images) {
-        images[index].classList.remove('hidden');
-    }
-        index = (index + 1) % images.length;
-    }
-    setInterval(ShowImage, 1000); */
-
-
-
-
-
-
+    }      
+    //index番目の画像からhidden削除  
+    images[index].classList.remove('hidden'); 
+    //indexに1を足し、画像数で割った余りを変数indexに代入   
+    index = (index + 1) % images.length;  
+}
+//ShowImage()を繰り返し実行
+setInterval(ShowImage, 1500);
 
 
 });
