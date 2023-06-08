@@ -33,8 +33,17 @@
             </div>
 
             <!--ジャスコの画像-->
-            <div class="mt-5">
-                <img  class="w-1/12" src="{{ asset('images/jasco.png') }}" alt="ジャスコ">
+            <div class="mt-5 images">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco01.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco02.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco03.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco04.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco05.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco06.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco07.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco08.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco09.png') }}" alt="ジャスコ">
+                <img  class="w-1/12" src="{{ asset('image_jasco/jasco10.png') }}" alt="ジャスコ">
             </div>
 
             <!--ジャスコセリフ-->

@@ -138,6 +138,27 @@ $(document).ready(function(){
     });
 });
 
+//画像をアニメっぽく/////////////////////////////////////////
+//画像を定数imagesに代入
+const images = document.querySelectorAll('.images img');
+console.log(images);
+const index = 0;
+
+/* function ShowImage() {
+    for (let i = 0; i < images.length; i++) {
+        images[i].classList.add('hidden');
+    } */
+    /* if(images) {
+        images[index].classList.remove('hidden');
+    }
+        index = (index + 1) % images.length;
+    }
+    setInterval(ShowImage, 1000); */
+
+
+
+
+
 
 
 
