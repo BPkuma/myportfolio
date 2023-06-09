@@ -48,7 +48,7 @@
             </div>
 
             <!--ジャスコセリフ-->
-            <div class="pt-5 talk">           
+            <!-- <div class="pt-5 talk">           
                 <div class="corner p-4 border-2 border-white w-6/12 ml-5">                
                     <p>
                         ジャスコ「&nbsp;{{Auth::user()->name ?? "ななし"}}&nbsp;さま
@@ -56,9 +56,9 @@
                         <br><span class="confirm flex justify-center">▼</span>
                     </p>                         
                 </div>
-            </div>
+            </div> -->
             <!--ジャスコセリフ-->
-            <div class="talk">           
+            <!-- <div class="talk">           
                 <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
                         <p>
                             ジャスコ「わたしは&nbsp;ジャスコ&nbsp;。
@@ -66,16 +66,16 @@
                             <br><span class="confirm flex justify-center">▼</span>
                         </p>
                 </div>
-            </div>
+            </div> -->
             <!--ジャスコセリフ-->
-            <div class="talk">           
-                <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
-                    <!--Dialoguesテーブルからセリフ取得-->
-                    @foreach($dialogues as $dialogue)
+            <div class="talk">    
+                @foreach($dialogues as $dialogue)       
+                    <div class="corner p-4 border-2 border-white w-6/12 ml-5">                        
+                        <!--Dialoguesテーブルからセリフ取得-->                       
                         <p>{{$dialogue->talk}}</p>
-                        <br><span class="confirm flex justify-center">▼</span>
-                    @endforeach
-                </div>
+                    </div> 
+                    @endforeach                    
+                    <br><span class="confirm flex justify-center">▼</span>
             </div>
 
             

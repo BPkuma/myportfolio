@@ -119,10 +119,11 @@ setInterval(recalc, 1000);
 
 //jQueryでセリフ表示変更/////////////////////////////////////
 $(document).ready(function(){
+    
     $('.confirm').on('click', function(){
         //クリックされた▼confirmの親の親要素にhidden追加
-        $(this).parent().parent().addClass('hidden');
-        //
+         $(this).parent().parent().addClass('hidden');
+        
         $(this).closest('.talk').next('.talk').children().first().removeClass('hidden');
     });
 });
@@ -147,7 +148,13 @@ function ShowImage() {
     index = (index + 1) % images.length;  
 }
 //ShowImage()を繰り返し実行
-setInterval(ShowImage, 1500);
+setInterval(ShowImage, 1500
+);
+
+//セリフを1レコードずつ表示
+/* 定数 = {!!json_encode($パラメータ)!!}
+
+splice(0, 1)[0] */
 
 
 });
