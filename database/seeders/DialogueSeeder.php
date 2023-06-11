@@ -17,7 +17,7 @@ class DialogueSeeder extends Seeder
         $user_name = Facade::getFacadeApplication()->make('auth')->user()->name ?? "ななし"; 
         
         $talks = [
-            'ジャスコ「'."\n".$user_name.'さま'."\n"." ".'JavaScriptおさらいのページへようこそ。」',            
+            'ジャスコ「'."\n".$user_name.'さま'."\n"." ".'JavaScriptおさらいのページへようこそ。」', 
             'ジャスコ「'." ".'わたしは'." ".'ジャスコ。'."\n".'伝説の'.$user_name."".'さま'." ".'をお待ちしてました。」',
             'ジャスコ「'." ".'一緒にJavaScriptのおさらいをしていきましょう'." ".'!」'
         ];

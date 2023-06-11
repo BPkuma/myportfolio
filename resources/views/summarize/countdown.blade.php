@@ -46,36 +46,18 @@
                 <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco10.png') }}" alt="ジャスコ">
                 <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco11.png') }}" alt="ジャスコ">
             </div>
-
+            
             <!--ジャスコセリフ-->
-            <!-- <div class="pt-5 talk">           
-                <div class="corner p-4 border-2 border-white w-6/12 ml-5">                
-                    <p>
-                        ジャスコ「&nbsp;{{Auth::user()->name ?? "ななし"}}&nbsp;さま
-                        <br>&nbsp;JavaScriptおさらいのページへようこそ。」
-                        <br><span class="confirm flex justify-center">▼</span>
-                    </p>                         
-                </div>
-            </div> -->
-            <!--ジャスコセリフ-->
-            <!-- <div class="talk">           
-                <div class="corner p-4 border-2 border-white w-6/12 ml-5 hidden">                
-                        <p>
-                            ジャスコ「わたしは&nbsp;ジャスコ&nbsp;。
-                            <br>伝説の&nbsp;{{Auth::user()->name ?? "ななし"}}&nbsp;さま&nbsp;をお待ちしてました。」
-                            <br><span class="confirm flex justify-center">▼</span>
-                        </p>
-                </div>
-            </div> -->
-            <!--ジャスコセリフ-->
-            <div class="talk">    
+            <!--data-dialogues属性にJSON形式にエンコードしたdialoguesを設定-->
+            <div id="dialogues" data-dialogues="{{ json_encode($dialogues) }}">                                    
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5">                        
                 @foreach($dialogues as $dialogue)       
-                    <div class="corner p-4 border-2 border-white w-6/12 ml-5">                        
                         <!--Dialoguesテーブルからセリフ取得-->                       
-                        <p>{{$dialogue->talk}}</p>
-                    </div> 
-                    @endforeach                    
-                    <br><span class="confirm flex justify-center">▼</span>
+                        <p id="talk"></p>
+                @endforeach   
+                      <br><span class="confirm flex justify-center cursor-pointer">▼</span>
+                </div> 
+                    
             </div>
 
             
