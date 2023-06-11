@@ -1,12 +1,12 @@
 <x-app-layout>    
     <slot>
         <!-- カウントダウンタイマーのページ -->
-        <div class="bg-black h-screen text-white">
-            <!--もくじ-->
+        <div class="bg-black h-screen text-white">            
+            <!--あしあと-->
             <div class="pt-2 float-right">         
-                <div class="corner p-4 border-2 border-white w-6/12 ml-5"> 
+                <div class="footprints corner p-4 border-2 border-white w-6/12 ml-5"> 
                     <div>
-                        <h2>もくじ&nbsp;&nbsp;&nbsp;&nbsp;<span id="open">▼</span></h2>
+                        <h2>あしあと&nbsp;&nbsp;&nbsp;&nbsp;<span id="open">▼</span></h2>
                     </div>
                     <nav>
                         <ul>
@@ -18,7 +18,7 @@
                             <li><a href="../06_reference/reference.html">参考資料</a></li>
                         </ul>
                     </nav>
-                </div>
+                </div>                
             </div>
             <!-- カウントダウンタイマー・サンプル表示 -->
             <div class="pt-24">           
@@ -31,22 +31,35 @@
                     </div>
                 </div>
             </div>
-
-            <!--ジャスコの画像-->
-            <div class="mt-5 images">
-                <img class="w-1/12" src="{{ asset('image_jasco/jasco01.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco02.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco03.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco04.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco05.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco06.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco07.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco08.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco09.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco10.png') }}" alt="ジャスコ">
-                <img class="w-1/12 hidden" src="{{ asset('image_jasco/jasco11.png') }}" alt="ジャスコ">
+            <!--画像エリア-->
+            <div class="img_box">
+                <!--ジャスコの画像-->
+                <div class="mt-5 images">
+                    <img class="jasco w-1/5" src="{{ asset('image_jasco/jasco01.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco02.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco03.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco04.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco05.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco06.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco07.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco08.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco09.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco10.png') }}" alt="ジャスコ">
+                    <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco11.png') }}" alt="ジャスコ">
+                </div>
+                <!--スライムの画像-->
+                <div class="mt-5 images">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim01.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim02.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim03.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim04.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim05.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim06.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim07.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim08.png') }}" alt="スライム">
+                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim09.png') }}" alt="スライム">                
+                </div>
             </div>
-            
             <!--ジャスコセリフ-->
             <!--data-dialogues属性にJSON形式にエンコードしたdialoguesを設定-->
             <div id="dialogues" data-dialogues="{{ json_encode($dialogues) }}">                                    
@@ -56,8 +69,14 @@
                         <p id="talk"></p>
                 @endforeach   
                       <br><span class="confirm flex justify-center cursor-pointer">▼</span>
-                </div> 
-                    
+                </div>                     
+            </div>
+            <!--はいorいいえ-->
+            <div class="yesno absolute top-50 hidden">
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5">
+                    <div>▶はい</div>
+                    <div>&nbsp;&nbsp;&nbsp;いいえ</div>
+                </div>
             </div>
 
             
