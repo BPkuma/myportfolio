@@ -4,3 +4,26 @@
 .corner {
   border-radius: 10px;
 }
+
+/*あしあとメニュー*/
+/* .footprints {
+  margin-top: 70%;
+} */
+
+/*はい、いいえ選択肢*/
+.yesno {
+  width: 25%;
+  right: 55%;
+}
+/**/
+div.img_box {
+  display: flex; /* 画像を横並びにする */
+  
+}
+
+img.jasco, img.slim {
+  margin-right: 400px; /* 画像の間隔を調整 */  
+
+}
+
+
