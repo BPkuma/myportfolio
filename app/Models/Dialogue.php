@@ -9,42 +9,23 @@ class Dialogue extends Model
 {
     use HasFactory;
 
-    //新しいレコードをまとめて追加するメソッド
-    public static function addTalks($talks) {
-        $existingTalks = Dialogue::whereIn('talk', $talks)->get();
-        foreach($existingTalks as $existingTalk) {
-            $existingTalk->delete();
-        }
+    //レコードをまるごと新しく更新するメソッド
+    public static function addTalks($talks) {       
+        //既存の重複レコードを削除 
+        Dialogue::whereIn('talk', $talks)->delete();
+        //$talksに存在しないレコードを削除        
         Dialogue::whereNotIn('talk', $talks)->delete();
 
-        $max_order = Dialogue::max('order');
-        foreach($talks as $talk) {
-            $max_order++;
+        //$order変数に1を代入
+        $order = 1;
+        foreach($talks as $talk) {            
             Dialogue::create([
-                'order' => $max_order,
+                //orderカラムに$order代入
+                'order' => $order,
+                //talkカラムに$talk代入
                 'talk' => $talk
             ]);
+            $order++;
         }
-    }
-
-    //新しいレコードを挿入する際、orderを振りなおすメソッド
-    /* public static function insertTalkAtOrder($talk, $order) {
-        $max_order = self::max('order');
-        $order = min($max_order + 1 , $order);
-        self::where('order', '>=', $order)->increment('order');
-        self::create([
-            'order' => $order,
-            'talk' => $talk
-        ]);  
-    } */
-    //レコードを削除する際、orderを振りなおすメソッド
-    /* public static function deleteTalkAtOrder($order) {
-        self::where('order', $order)->delete();
-        self::where('order', '>', $order)->decrement('order');
-    } */
-
-    //既存のレコードを更新するメソッド
-    /* public static function updateTalkAtOrder($order, $talk) {
-        self::where('order', $order)->update(['talk' => $talk]);
-    } */
+    }    
 }
