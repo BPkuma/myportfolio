@@ -74,8 +74,8 @@
             <!--はいorいいえ-->
             <div class="yesno absolute top-50 hidden">
                 <div class="corner p-4 border-2 border-white w-6/12 ml-5">
-                    <div>▶はい</div>
-                    <div>&nbsp;&nbsp;&nbsp;いいえ</div>
+                    <div class="yes"><span id="yesno_choose1">▶</span>はい</div>
+                    <div class="no"><span id="yesno_choose2">▶</span>いいえ</div>
                 </div>
             </div>
 
