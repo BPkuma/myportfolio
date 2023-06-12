@@ -34,7 +34,7 @@
             <!--画像エリア-->
             <div class="img_box">
                 <!--ジャスコの画像-->
-                <div class="mt-5 images">
+                <div class="mt-5 images flex-shrink-0">
                     <img class="jasco w-1/5" src="{{ asset('image_jasco/jasco01.png') }}" alt="ジャスコ">
                     <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco02.png') }}" alt="ジャスコ">
                     <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco03.png') }}" alt="ジャスコ">
@@ -48,7 +48,7 @@
                     <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco11.png') }}" alt="ジャスコ">
                 </div>
                 <!--スライムの画像-->
-                <div class="mt-5 images">
+                <div class="mt-5 images flex-shrink-0">
                     <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime01.png') }}" alt="スライム">
                     <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime02.png') }}" alt="スライム">
                     <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime03.png') }}" alt="スライム">
@@ -63,12 +63,12 @@
             <!--ジャスコセリフ-->
             <!--data-dialogues属性にJSON形式にエンコードしたdialoguesを設定-->
             <div id="dialogues" data-dialogues="{{ json_encode($dialogues) }}">                                    
-                <div class="corner p-4 border-2 border-white w-6/12 ml-5">                        
+                <div class="corner p-4 border-2 border-white w-6/12 ml-5 h-40 cursor-pointer">                        
                 @foreach($dialogues as $dialogue)       
                         <!--Dialoguesテーブルからセリフ取得-->                       
                         <p id="talk"></p>
                 @endforeach   
-                      <br><span class="confirm flex justify-center cursor-pointer">▼</span>
+                      <br><span class="confirm cursor-pointer flex justify-center pt-6">▼</span>
                 </div>                     
             </div>
             <!--はいorいいえ-->
@@ -79,7 +79,20 @@
                 </div>
             </div>
 
-            
+<!--コードはじまり-->
+<div class="pt-20">           
+{{-- <div class="corner p-4 border-2 border-white w-6/12 ml-5"> --}}
+<pre><code class="language-JavaScript">
+    //現在の日時を取得
+    const now = new Date();
+    //タイムスタンプを取得＆コンソールに出力
+    console.log(now.getTime());
+    
+    //出力結果：1683768506024
+</code></pre>
+{{-- </div> --}}
+</div>
+<!--コードここまで-->           
             
         </div>
     </slot>
