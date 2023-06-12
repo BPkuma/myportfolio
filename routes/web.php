@@ -29,7 +29,8 @@ Route::middleware('auth')->group(function () {
 
 /////////////////////JavaScriptまとめ//////////////////////////////////////////
 Route::get('/summarize', [SummarizeController::class, 'summarize'])->name('summarize');
-Route::get('/countdown', [SummarizeController::class, 'countdown'])->name('countdown');
+Route::get('/countdown', [SummarizeController::class, 'countdown'])/* ->middleware('auth') */->name('countdown');
+Route::get('/countdown', [SummarizeController::class, 'index'])->name('index');
 
 ////////////////////Ankiタイピング/////////////////////////////////////////////
 Route::get('/typing/game', [PostController::class, 'typing'])->name('tayping.game');

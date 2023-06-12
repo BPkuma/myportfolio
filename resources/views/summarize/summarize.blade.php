@@ -15,11 +15,12 @@
             <ul class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5">
                 <li id="summarize" class="text-white cursor-pointer">
                     <span id="choose1">▶</span>
-                    &nbsp;&nbsp;<a href="countdown">おさらいする</a>
+                    &nbsp;&nbsp;<a href="countdown">おさらい&nbsp;をはじめる
+                    </a>
                 </li>
                 <li id="state" class="text-white cursor-pointer">
                     <span id="choose2" class="hidden">▶</span>
-                    &nbsp;&nbsp;ステータスをかくにんする
+                    &nbsp;&nbsp;ステータス&nbsp;をかくにんする
                 </li>
                 <li id="run" class="text-white cursor-pointer">
                     <span id="choose3" class="hidden">▶</span>
@@ -29,7 +30,7 @@
             <!-- ステータス -->
             <div id="state_data" class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5 hidden">                
                 <p>
-                ななし
+                {{Auth::user()->name ?? "ななし"}}
                 </p>
                 <p>
                 レベル&nbsp;0
