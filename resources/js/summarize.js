@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }  
     }
     //ShowImage()を繰り返し実行
-    setInterval(ShowImageJasco, 1500);
+    setInterval(ShowImageJasco, 1500);    
 
     //セリフの表示////////////////////////////////////////////////
     //#dialoguesを定数dialoguesElementに代入
@@ -152,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const talk = document.getElementById('talk');    
     //confirm要素を定数confirmに代入
     const confirm = document.querySelector('.confirm');
+    //cursor-pointer要素を定数cursor_pointerに代入
+    const cursor_pointer = document.querySelector('.cursor-pointer');
     //yesno要素を定数yesnoに代入
     const yesno = document.querySelector('.yesno');
     //yes・no要素を定数yes・noに代入
@@ -184,8 +186,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //confirmがnullではない場合
     if (confirm !== null) {
-        //confirmがクリックされたら
-        confirm.addEventListener('click', function() {    
+        //cursor_pointerがクリックされたら
+        cursor_pointer.addEventListener('click', function() {    
             //current_indexがオブジェクトの個数より少なかったら
             if(current_index  < dialogues.length) {
                 //showDialogue()実行
@@ -195,10 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     //フラグがqなら、yesno選択肢表示
                     case 'q':
                         yesno.classList.remove('hidden');
+                        confirm.classList.add('hidden');
                         break;
                     //フラグがslimeなら、スライム君登場
                     case 'slime':
-                    setTimeout(ShowImageslime, 500);
+                        setTimeout(ShowImageslime, 300);
+                        setInterval(ShowImageslime, 1500);  
+                        break;
                 }
                 //インクリメント
                 current_index++;                        
@@ -207,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
         });
-    } 
+    }     
 
     //yesno選択肢が存在する場合
     if(yesno !== null) {
@@ -223,6 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         yes.addEventListener('click', function() {
             showDialogue(dialogues[current_index]);
             yesno.classList.add('hidden');
+            confirm.classList.remove('hidden');
         });
         
         //noがクリックされたら
