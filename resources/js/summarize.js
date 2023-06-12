@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //let i = 0;
     //特定の画像を指定する用の変数indexを初期化
     let jasco_index = 0;
-    let slim_index = 0;
+    let slime_index = 0;
 
     //ジャスコの画像を順番に表示させるShowImageJasco()作成
     function ShowImageJasco() {        
@@ -130,25 +130,25 @@ document.addEventListener('DOMContentLoaded', () => {
             jasco_index = (jasco_index + 1) % images.length;
         }  
     }
-    //スライムの画像を順番に表示させるShowImageSlim()作成
-    function ShowImageSlim() {        
+    //スライムの画像を順番に表示させるShowImageslime()作成
+    function ShowImageslime() {        
         //全ての画像を取得し、定数imagesに代入
-        const images = document.querySelectorAll('img.slim');    
+        const images = document.querySelectorAll('img.slime');    
         //全ての画像にhidden追加
         for (let i = 0; i < images.length; i++) {
             images[i].classList.add('hidden');
         }   
         //画像数が存在したら   
         if(images.length > 0) { 
-            //slim_index番目の画像からhidden削除 
-            images[slim_index].classList.remove('hidden'); 
-            //slim_indexに1を足し、画像数で割った余りを変数slim_indexに代入   
-            slim_index = (slim_index + 1) % images.length;
+            //slime_index番目の画像からhidden削除 
+            images[slime_index].classList.remove('hidden'); 
+            //slime_indexに1を足し、画像数で割った余りを変数slime_indexに代入   
+            slime_index = (slime_index + 1) % images.length;
         }  
     }
     //ShowImage()を繰り返し実行
     setInterval(ShowImageJasco, 1500);
-    setInterval(ShowImageSlim, 1500);
+    setInterval(ShowImageslime, 1500);
     
     //セリフの表示////////////////////////////////////////////////
     //#dialoguesを定数dialoguesElementに代入

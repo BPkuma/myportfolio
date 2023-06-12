@@ -49,15 +49,15 @@
                 </div>
                 <!--スライムの画像-->
                 <div class="mt-5 images">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim01.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim02.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim03.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim04.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim05.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim06.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim07.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim08.png') }}" alt="スライム">
-                    <img class="slim w-1/5 hidden" src="{{ asset('image_slim/slim09.png') }}" alt="スライム">                
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime01.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime02.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime03.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime04.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime05.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime06.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime07.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime08.png') }}" alt="スライム">
+                    <img class="slime w-1/5 hidden" src="{{ asset('image_slime/slime09.png') }}" alt="スライム">                
                 </div>
             </div>
             <!--ジャスコセリフ-->
