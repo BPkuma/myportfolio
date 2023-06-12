@@ -148,15 +148,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //ShowImage()を繰り返し実行
     setInterval(ShowImageJasco, 1500);
+
+    //スライム出現タイミング
+
+
     setInterval(ShowImageslime, 1500);
     
     //セリフの表示////////////////////////////////////////////////
     //#dialoguesを定数dialoguesElementに代入
     const dialoguesElement = document.getElementById('dialogues');
     //#talkを定数talkに代入
-    const talk = document.getElementById('talk');
+    const talk = document.getElementById('talk');    
     //confirm要素を定数confirmに代入
     const confirm = document.querySelector('.confirm');
+    //yesno要素を定数yesnoに代入
+    const yesno = document.querySelector('.yesno');
+    //yes・no要素を定数yes・noに代入
+    const yes = document.querySelector('.yes');
+    const no = document.querySelector('.no');
+    //yesno選択肢の▶#yesno_choose1・2要素を定数yesno_choose1・2に代入
+    const yesno_choose1 = document.getElementById('yesno_choose1');
+    const yesno_choose2 = document.getElementById('yesno_choose2');
 
     //空の配列を変数dialoguesに代入
     let dialogues = [];    
@@ -177,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } 
     }
     //実行
-    showDialogue(dialogues[current_index]);
+    showDialogue(dialogues[current_index]);    
 
     //confirmがnullではない場合
     if (confirm !== null) {
@@ -186,14 +198,28 @@ document.addEventListener('DOMContentLoaded', () => {
             //current_indexがオブジェクトの個数より少なかったら
             if(current_index  < dialogues.length) {
                 //showDialogue()実行
-                showDialogue(dialogues[current_index]);        
+                showDialogue(dialogues[current_index]); 
+                //会話内容にフラグがあった場合 
+                switch(dialogues[current_index].flag) {
+                    //フラグがｑなら、選択肢表示
+                    case 'q':
+                        console.log('yesno');
+                        yesno.classList.remove('hidden');
+                        break;
+                }
+                //インクリメント
+                current_index++;                        
             } else {
                 console.log('表示終わり');
             }
-            //インクリメント
-            current_index++;
+            
         });
     } 
+
+    //選択肢が出現した場合
+    /* if(yesno !== null) {
+
+    } */
 });
 
 
