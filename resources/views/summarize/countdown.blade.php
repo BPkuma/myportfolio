@@ -79,20 +79,102 @@
                 </div>
             </div>
 
-<!--コードはじまり-->
-<div class="pt-20">           
-{{-- <div class="corner p-4 border-2 border-white w-6/12 ml-5"> --}}
-<pre><code class="language-JavaScript">
+<!--code_nowコードはじまり-->
+<div class="pt-20 code_now hidden">           
+    <pre><code class="language-JavaScript">
     //現在の日時を取得
     const now = new Date();
     //タイムスタンプを取得＆コンソールに出力
     console.log(now.getTime());
     
     //出力結果：1683768506024
-</code></pre>
-{{-- </div> --}}
+    </code></pre>
 </div>
-<!--コードここまで-->           
+<!--コードここまで-->       
+<!--code_goalコードはじまり-->
+<div class="pt-20 code_goal hidden">           
+    <pre><code class="language-JavaScript">
+    //現在の日時を取得                   
+    const goal = new Date();
+    //今日の終わりの時刻を設定
+    goal.setHours(23);  
+    goal.setMinutes(59);
+    goal.setSeconds(59);    
+    //コンソールに出力
+    console.log(goal);
+
+    //出力結果：Thu May 11 2023 23:59:59 GMT+0900 (日本標準時)
+
+    //タイムスタンプを取得＆コンソールに出力
+    console.log(goal.getTime());
+
+    //出力結果：1683817199360
+    </code></pre>
+</div>
+<!--コードここまで-->
+<!--code_subtractionコードはじまり-->
+<div class="pt-20 code_subtraction hidden">           
+    <pre><code class="language-JavaScript">
+    //タイムスタンプにした一日の終わりマイナス現在
+    const diff = goal.getTime() - now.getTime();    
+    //コンソールに出力
+    console.log(deff);
+    
+    //出力結果：46048000
+    </code></pre>
+</div>
+<!--コードここまで-->      
+<!--code_hmsコードはじまり-->
+<div class="pt-20 code_hms hidden">           
+    <pre><code class="language-JavaScript">
+    //秒、分、時、日を計算
+    const sec = Math.floor(diff / 1000) % 60;            
+    const min = Math.floor(diff / 1000 / 60) % 60;       
+    const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+    //日は必ず0になるはずだが、念のため計算する
+    const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+    
+    //配列に格納し、中身を見てみる
+    const count = [days, hours, min, sec];
+    console.log(count);
+
+    //出力結果：(4) [0, 7, 0, 36]
+    </code></pre>
+</div>
+<!--コードここまで-->   
+<!--code_countdownコードはじまり-->
+<div class="pt-20 code_countdown hidden">           
+    <pre><code class="language-JavaScript">
+    'use strict';
+
+    //計算して結果を配列で返すcountdown()関数を作る    
+    function countdown(due) {
+        //現在の日時
+        const now = new Date();
+        //未来-現在
+        const diff = due.getTime() - now.getTime();
+        //秒、分、時、日を計算
+        const sec = Math.floor(rest / 1000) % 60;
+        const min = Math.floor(rest / 1000 / 60) % 60;
+        const hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+        const days = Math.floor(rest / 1000 / 60 / 60 / 24);
+        //配列に格納
+        const count = [days, hours, min, sec];
+        return count;                         
+    } 
+    //今日の終わりの時刻を設定
+    const goal = new Date();
+    goal.setHours(23);
+    goal.setMinutes(59);
+    goal.setSeconds(59);
+    
+    //countdown()関数の呼び出し
+    countdown(goal);                
+    </code></pre>
+</div>
+<!--コードここまで-->    
+
+
             
         </div>
     </slot>
