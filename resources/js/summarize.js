@@ -105,15 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //recalc()を1秒ごとに繰り返し実行
     setInterval(recalc, 1000);
-
     
     //画像をアニメっぽく/////////////////////////////////////////
-    //全ての画像を指定する用の変数iを初期化
-    //let i = 0;
     //特定の画像を指定する用の変数indexを初期化
     let jasco_index = 0;
     let slime_index = 0;
-
     //ジャスコの画像を順番に表示させるShowImageJasco()作成
     function ShowImageJasco() {        
         //全ての画像を取得し、定数imagesに代入
@@ -149,11 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //ShowImage()を繰り返し実行
     setInterval(ShowImageJasco, 1500);
 
-    //スライム出現タイミング
-
-
-    setInterval(ShowImageslime, 1500);
-    
     //セリフの表示////////////////////////////////////////////////
     //#dialoguesを定数dialoguesElementに代入
     const dialoguesElement = document.getElementById('dialogues');
@@ -201,11 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 showDialogue(dialogues[current_index]); 
                 //会話内容にフラグがあった場合 
                 switch(dialogues[current_index].flag) {
-                    //フラグがｑなら、選択肢表示
+                    //フラグがqなら、yesno選択肢表示
                     case 'q':
-                        console.log('yesno');
                         yesno.classList.remove('hidden');
                         break;
+                    //フラグがslimeなら、スライム君登場
+                    case 'slime':
+                    setTimeout(ShowImageslime, 500);
                 }
                 //インクリメント
                 current_index++;                        
@@ -216,10 +209,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } 
 
-    //選択肢が出現した場合
-    /* if(yesno !== null) {
+    //yesno選択肢が存在する場合
+    if(yesno !== null) {
+        //yesにマウスオーバーしたら
+        yes.addEventListener('mouseover', function() {
+            toggleHidden(yesno_choose1, [yesno_choose2]);    
+        });
+        //noにマウスオーバーしたら
+        no.addEventListener('mouseover', function() {
+            toggleHidden(yesno_choose2, [yesno_choose1]);    
+        });
+        //yesがクリックされたら
+        yes.addEventListener('click', function() {
+            showDialogue(dialogues[current_index]);
+            yesno.classList.add('hidden');
+        });
+        
+        //noがクリックされたら
+        no.addEventListener('click', function() {
+            forever();
+            
+            setTimeout(function() {
+                showDialogue(dialogues[current_index -1]);
+            }, 2000);   
+            yesno.classList.remove('hidden');         
+        });
 
-    } */
+        function forever() {
+            talk.textContent = 'ジャスコ「え？よくきこえませんでした。」';
+            yesno.classList.add('hidden');
+        }
+    }
 });
 
 
