@@ -90,7 +90,7 @@
     //出力結果：1683768506024
     </code></pre>
 </div>
-<!--コードここまで-->       
+<!--code_nowコードここまで-->       
 <!--code_goalコードはじまり-->
 <div class="pt-20 code_goal hidden">           
     <pre><code class="language-JavaScript">
@@ -111,7 +111,7 @@
     //出力結果：1683817199360
     </code></pre>
 </div>
-<!--コードここまで-->
+<!--code_goalコードここまで-->
 <!--code_subtractionコードはじまり-->
 <div class="pt-20 code_subtraction hidden">           
     <pre><code class="language-JavaScript">
@@ -123,7 +123,7 @@
     //出力結果：46048000
     </code></pre>
 </div>
-<!--コードここまで-->      
+<!--code_subtractionコードここまで-->      
 <!--code_hmsコードはじまり-->
 <div class="pt-20 code_hms hidden">           
     <pre><code class="language-JavaScript">
@@ -141,7 +141,7 @@
     //出力結果：(4) [0, 7, 0, 36]
     </code></pre>
 </div>
-<!--コードここまで-->   
+<!--code_hmsコードここまで-->   
 <!--code_countdownコードはじまり-->
 <div class="pt-20 code_countdown hidden">           
     <pre><code class="language-JavaScript">
@@ -172,7 +172,7 @@
     countdown(goal);                
     </code></pre>
 </div>
-<!--コードここまで-->    
+<!--code_countdownコードここまで-->    
 
 
             
