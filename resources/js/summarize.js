@@ -54,21 +54,32 @@ document.addEventListener('DOMContentLoaded', () => {
             run_data.classList.toggle('hidden');
         });
     }
-    //カウントダウンタイマーの表示////////////////////////////////////////
+    //カウントダウンタイマーの表示////////////////////////////////////////    
     //spanタグのidを定数todayに代入
     const today = document.getElementById('today');
+
     //Dateオブジェクトをインスタンス化して定数nowに代入
     const now = new Date();
     //定数nowから本日の月、日、曜日を取得して定数month、day、weekに代入
     const month = now.getMonth();
     const day = now.getDate();
     const week = ['日', '月', '火', '水', '木', '金', '土'][now.getDay()];
+
     //Dateオブジェクトをインスタンス化して定数goalに代入
     const goal = new Date();
     //定数goalに本日の終わり時間を設定する
     goal.setHours(23);
     goal.setMinutes(59);
     goal.setSeconds(59);
+
+    //サンプル表示用の残り時間を定数sample_counterに代入
+    const sample_counter = countDown(goal);
+    //テンプレートリテラルで作ったテキストを定数sample_timeに代入
+    const sample_time = `${sample_counter[1]}時間${sample_counter[2]}分${sample_counter[3]}秒`;
+    //サンプルを表示させるタイミングのための定数sample/sample2を定義
+    const sample = document.querySelector('.sample');
+    const sample2 = document.querySelector('.sample2');
+
     //定数todayが存在していた場合
     if(today) {
         //テンプレート文字列を表示
@@ -97,14 +108,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const time = `${counter[1]}時間${counter[2]}分${String(counter[3]).padStart(2, '0')}秒`;
         //#timerを定数timerに代入
         const timer = document.getElementById('timer');
+        //
+        const sample_timer2 = document.getElementById('sample_timer2');
         //timerが存在したら
         if(timer) {
-        //timeに書き換え
-        timer.textContent = time;
+            //timeに書き換え
+            timer.textContent = time;
+        }
+        if(sample_timer2) {
+            sample_timer2.textContent = time;
         }
     }
     //recalc()を1秒ごとに繰り返し実行
     setInterval(recalc, 1000);
+    //残り時間のサンプル表示
+    document.getElementById('sample_timer').textContent = sample_time;
     
     //画像をアニメっぽく/////////////////////////////////////////
     //特定の画像を指定する用の変数indexを初期化
@@ -168,6 +186,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const code_subtraction = document.querySelector('.code_subtraction');
     const code_hms = document.querySelector('.code_hms');
     const code_countdown = document.querySelector('.code_countdown');
+    const code_backquote = document.querySelector('.code_backquote');
+    const code_html = document.querySelector('.code_html');
+    const code_rewrite = document.querySelector('.code_rewrite');
+    const code_recalc = document.querySelector('.code_recalc');
+
+    
 
     //空の配列を変数dialoguesに代入
     let dialogues = [];    
@@ -234,7 +258,36 @@ document.addEventListener('DOMContentLoaded', () => {
                         code_hms.classList.add('hidden');
                         code_countdown.classList.remove('hidden');
                         break;
-
+                    //フラグがcode_backquoteなら、コードcode_backquote表示
+                    case 'code_backquote':
+                        code_countdown.classList.add('hidden');
+                        code_backquote.classList.remove('hidden');
+                        break;
+                    //フラグがcode_htmlなら、コードcode_html表示
+                    case 'code_html':
+                        code_backquote.classList.add('hidden');
+                        code_html.classList.remove('hidden');
+                        break;
+                    //フラグがcode_rewriteなら、コードcode_rewrite表示
+                    case 'code_rewrite':
+                        code_rewrite.classList.remove('hidden');
+                        break;
+                    //フラグがsampleなら、サンプルsample表示
+                    case 'sample':
+                        code_html.classList.add('hidden');
+                        code_rewrite.classList.add('hidden');
+                        sample.classList.remove('hidden');
+                        break;
+                    //フラグがcode_recalcなら、コードcode_recalc表示
+                    case 'code_recalc':
+                        code_recalc.classList.remove('hidden');
+                        break;
+                    //フラグがsample2なら、サンプルsample2表示
+                    case 'sample2':
+                        code_recalc.classList.add('hidden');
+                        sample.classList.add('hidden');
+                        sample2.classList.remove('hidden');
+                        break;
                 }
                 //インクリメント
                 current_index++;                        
