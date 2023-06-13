@@ -105,15 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //recalc()を1秒ごとに繰り返し実行
     setInterval(recalc, 1000);
-
     
     //画像をアニメっぽく/////////////////////////////////////////
-    //全ての画像を指定する用の変数iを初期化
-    //let i = 0;
     //特定の画像を指定する用の変数indexを初期化
     let jasco_index = 0;
     let slime_index = 0;
-
     //ジャスコの画像を順番に表示させるShowImageJasco()作成
     function ShowImageJasco() {        
         //全ての画像を取得し、定数imagesに代入
@@ -147,13 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }  
     }
     //ShowImage()を繰り返し実行
-    setInterval(ShowImageJasco, 1500);
+    setInterval(ShowImageJasco, 1500);    
 
-    //スライム出現タイミング
-
-
-    setInterval(ShowImageslime, 1500);
-    
     //セリフの表示////////////////////////////////////////////////
     //#dialoguesを定数dialoguesElementに代入
     const dialoguesElement = document.getElementById('dialogues');
@@ -161,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const talk = document.getElementById('talk');    
     //confirm要素を定数confirmに代入
     const confirm = document.querySelector('.confirm');
+    //cursor-pointer要素を定数cursor_pointerに代入
+    const cursor_pointer = document.querySelector('.cursor-pointer');
     //yesno要素を定数yesnoに代入
     const yesno = document.querySelector('.yesno');
     //yes・no要素を定数yes・noに代入
@@ -169,6 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //yesno選択肢の▶#yesno_choose1・2要素を定数yesno_choose1・2に代入
     const yesno_choose1 = document.getElementById('yesno_choose1');
     const yesno_choose2 = document.getElementById('yesno_choose2');
+    //各コードの要素を定数に代入///////////////////////////////////////////////////////
+    const code_now = document.querySelector('.code_now');
+    const code_goal = document.querySelector('.code_goal');
+    const code_subtraction = document.querySelector('.code_subtraction');
+    const code_hms = document.querySelector('.code_hms');
+    const code_countdown = document.querySelector('.code_countdown');
 
     //空の配列を変数dialoguesに代入
     let dialogues = [];    
@@ -193,19 +192,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //confirmがnullではない場合
     if (confirm !== null) {
-        //confirmがクリックされたら
-        confirm.addEventListener('click', function() {    
+        //cursor_pointerがクリックされたら
+        cursor_pointer.addEventListener('click', function() {    
             //current_indexがオブジェクトの個数より少なかったら
             if(current_index  < dialogues.length) {
                 //showDialogue()実行
                 showDialogue(dialogues[current_index]); 
                 //会話内容にフラグがあった場合 
                 switch(dialogues[current_index].flag) {
-                    //フラグがｑなら、選択肢表示
+                    //フラグがqなら、yesno選択肢表示
                     case 'q':
-                        console.log('yesno');
                         yesno.classList.remove('hidden');
+                        confirm.classList.add('hidden');
                         break;
+                    //フラグがslimeなら、スライム君登場
+                    case 'slime':
+                        setTimeout(ShowImageslime, 300);
+                        setInterval(ShowImageslime, 1500);  
+                        break;
+                    //フラグがcode_nowなら、コードcode_now表示
+                    case 'code_now':
+                        code_now.classList.remove('hidden');
+                        break;
+                    //フラグがcode_goalなら、コードcode_goal表示
+                    case 'code_goal':
+                        code_now.classList.add('hidden');
+                        code_goal.classList.remove('hidden');
+                        break;
+                    //フラグがcode_subtractionなら、コードcode_subtraction表示
+                    case 'code_subtraction':
+                        code_goal.classList.add('hidden');
+                        code_subtraction.classList.remove('hidden');
+                        break;
+                    //フラグがcode_hmsなら、コードcode_hms表示
+                    case 'code_hms':
+                        code_subtraction.classList.add('hidden');
+                        code_hms.classList.remove('hidden');
+                        break;
+                    //フラグがcode_countdownなら、コードcode_countdown表示
+                    case 'code_countdown':
+                        code_hms.classList.add('hidden');
+                        code_countdown.classList.remove('hidden');
+                        break;
+
                 }
                 //インクリメント
                 current_index++;                        
@@ -214,12 +243,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
         });
-    } 
+    }     
 
-    //選択肢が出現した場合
-    /* if(yesno !== null) {
+    //yesno選択肢が存在する場合
+    if(yesno !== null) {
+        //yesにマウスオーバーしたら
+        yes.addEventListener('mouseover', function() {
+            toggleHidden(yesno_choose1, [yesno_choose2]);    
+        });
+        //noにマウスオーバーしたら
+        no.addEventListener('mouseover', function() {
+            toggleHidden(yesno_choose2, [yesno_choose1]);    
+        });
+        //yesがクリックされたら
+        yes.addEventListener('click', function() {
+            showDialogue(dialogues[current_index]);
+            yesno.classList.add('hidden');
+            confirm.classList.remove('hidden');
+        });
+        
+        //noがクリックされたら
+        no.addEventListener('click', function() {
+            forever();
+            
+            setTimeout(function() {
+                showDialogue(dialogues[current_index -1]);
+            }, 2000);   
+            yesno.classList.remove('hidden');         
+        });
 
-    } */
+        function forever() {
+            talk.textContent = 'ジャスコ「え？よくきこえませんでした。」';
+            yesno.classList.add('hidden');
+        }
+    }
 });
 
 
