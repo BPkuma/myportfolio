@@ -68,7 +68,7 @@
                         <!--Dialoguesテーブルからセリフ取得-->                       
                         <p id="talk"></p>
                 @endforeach   
-                      <br><span class="confirm cursor-pointer flex justify-center pt-6">▼</span>
+                      <br><span class="confirm cursor-pointer flex justify-center">▼</span>
                 </div>                     
             </div>
             <!--はいorいいえ-->
@@ -147,8 +147,8 @@
     <pre><code class="language-JavaScript">
     'use strict';
 
-    //計算して結果を配列で返すcountdown()関数を作る    
-    function countdown(due) {
+    //計算して結果を配列で返すcountdDown()関数を作る    
+    function countDown(due) {
         //現在の日時
         const now = new Date();
         //未来-現在
@@ -158,8 +158,9 @@
         const min = Math.floor(rest / 1000 / 60) % 60;
         const hours = Math.floor(rest / 1000 / 60 / 60) % 24;
         const days = Math.floor(rest / 1000 / 60 / 60 / 24);
-        //配列に格納
+        //配列に格納し、定数countに代入
         const count = [days, hours, min, sec];
+        //戻り値をcountに
         return count;                         
     } 
     //今日の終わりの時刻を設定
@@ -168,12 +169,69 @@
     goal.setMinutes(59);
     goal.setSeconds(59);
     
-    //countdown()関数の呼び出し
-    countdown(goal);                
+    //countDown()関数の呼び出し
+    countDown(goal);                
     </code></pre>
 </div>
 <!--code_countdownコードここまで-->    
+<!--code_backquoteコードはじまり-->
+<div class="pt-20 code_backquote hidden">           
+    <pre><code class="language-JavaScript">
+    //呼び出した関数を定数counterに代入
+    const counter = countDown(goal);
+    
+    //counterから値を1つずつ取り出し、テンプレートリテラルでテキストを作る＆コンソールに出力
+    console.log(`${counter[1]}時間${counter[2]}分${counter[3]}秒`);
+    
+    //出力結果：<span class="marker">3時間52分32秒</span>
+    </code></pre>
+</div>
+<!--code_backquoteコードここまで--> 
+<!--code_htmlコードはじまり-->
+<div class="pt-20 code_html hidden">
+    <pre><code class="language-html">
+    &lt;p&gt;残り時間&gt;&lt;span id="timer">&lt;/span&gt;&lt;/p&gt;
+    </code></pre>
+</div>
+<!--code_htmlコードここまで-->
+<!--code_rewriteコードはじまり-->
+<div class="pt-20 code_rewrite hidden">
+    <pre><code class="language-JavaScript">
+    //テンプレートリテラルで作ったテキストを定数timeに代入
+    const time = `${counter[1]}時間${counter[2]}分${counter[3]}秒`;
+    
+    //id#timerで取得したhtmlに定数timeを代入
+    document.getElementById('timer').textContent = time;
+    </code></pre>
+</div>
+<!--code_rewriteコードここまで-->
 
+<!--解説中にサンプル表示1-->
+<div class="sample mt-5 text-center hidden">
+    <p>残り時間<span id="sample_timer"></span></p>    
+</div>
+
+<!--code_recalcコードはじまり-->
+<div class="pt-20 code_recalc hidden">
+    <pre><code class="language-JavaScript">
+    //まとめてrecalc()にする
+    function recalc() {
+    const counter = countDown(goal);
+    const time = `${counter[1]}時間${counter[2]}分${counter[3]}秒`;
+    document.getElementById('timer').textContent = time;    
+    }    
+
+    //recalc()を1秒ごとに繰り返し実行
+    setInterval(recalc, 1000);
+    </code></pre>
+</div>
+<!--code_recalcコードここまで-->
+
+<!--解説中にサンプル表示2-->
+<div class="sample2 mt-5 text-center hidden">
+    <p>残り時間<span id="sample_timer2"></span></p>    
+</div>
+  
 
             
         </div>
