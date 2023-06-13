@@ -231,6 +231,29 @@
 <div class="sample2 mt-5 text-center hidden">
     <p>残り時間<span id="sample_timer2"></span></p>    
 </div>
+
+<!--code_padstartコードはじまり-->
+<div class="pt-20 code_padstart hidden">
+    <pre><code class="language-JavaScript">
+    //まとめてrecalc()にする
+    function recalc() {
+    const counter = countDown(goal);
+
+    //String()とpadStart()を追加
+    const time = `${counter[1]}時間${counter[2]}分${String(counter[3]).padStart(2, '0')}秒`;
+    document.getElementById('timer').textContent = time;    
+    }    
+
+    //recalc()を1秒ごとに繰り返し実行
+    setInterval(recalc, 1000);
+    </code></pre>
+</div>
+<!--code_padstartコードここまで-->
+
+<!--解説中にサンプル表示3-->
+<div class="sample3 mt-5 text-center hidden">
+    <p>残り時間<span id="sample_timer3"></span></p>    
+</div>
   
 
             
