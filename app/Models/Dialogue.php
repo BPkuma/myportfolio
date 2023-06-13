@@ -25,9 +25,9 @@ class Dialogue extends Model
             Dialogue::create([
                 //orderカラムに$order代入
                 'order' => $order,
-                //talkカラムに$talk代入
+                //talkカラムに$talkの0番目の値代入
                 'talk' => $talk[0],
-                //flagカラムに値があれば$flag代入
+                //flagカラムに$talkの1番目の値代入
                 'flag' => $talk[1]
             ]);
             $order++;
