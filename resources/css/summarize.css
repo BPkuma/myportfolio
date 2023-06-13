@@ -9,6 +9,7 @@
 .confirm {
   position: absolute;
   right: 73%;
+  top: 48%;
 }
 
 /*あしあとメニュー*/
@@ -21,7 +22,7 @@
   width: 25%;
   right: 55%;
   position: absolute;
-  top: 55%;
+  top: 43%;
   opacity: 0.8;
   height: 90px;
 }
