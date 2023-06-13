@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //サンプルを表示させるタイミングのための定数sample/sample2を定義
     const sample = document.querySelector('.sample');
     const sample2 = document.querySelector('.sample2');
+    const sample3 = document.querySelector('.sample3');
 
     //定数todayが存在していた場合
     if(today) {
@@ -104,19 +105,26 @@ document.addEventListener('DOMContentLoaded', () => {
     function recalc() {
         //countDown()を実行し、定数counterに代入
         const counter = countDown(goal);
-        //テンプレート文字列を作成し、定数timeに代入
+        //テンプレート文字列を作成し、定数timeに代入(psdStart()で秒の桁を2桁に)
         const time = `${counter[1]}時間${counter[2]}分${String(counter[3]).padStart(2, '0')}秒`;
+        //テンプレート文字列を作成し、定数timeに代入(psdStart()無しバージョン)
+        const time2 =  `${counter[1]}時間${counter[2]}分${counter[3]}秒`;
         //#timerを定数timerに代入
         const timer = document.getElementById('timer');
-        //
+        //サンプル用
         const sample_timer2 = document.getElementById('sample_timer2');
+        const sample_timer3 = document.getElementById('sample_timer3');
+        
         //timerが存在したら
         if(timer) {
             //timeに書き換え
             timer.textContent = time;
         }
         if(sample_timer2) {
-            sample_timer2.textContent = time;
+            sample_timer2.textContent = time2;
+        }
+        if(sample_timer3) {
+            sample_timer3.textContent = time;
         }
     }
     //recalc()を1秒ごとに繰り返し実行
@@ -190,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const code_html = document.querySelector('.code_html');
     const code_rewrite = document.querySelector('.code_rewrite');
     const code_recalc = document.querySelector('.code_recalc');
+    const code_padstart = document.querySelector('.code_padstart');
 
     
 
@@ -287,6 +296,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         code_recalc.classList.add('hidden');
                         sample.classList.add('hidden');
                         sample2.classList.remove('hidden');
+                        break;
+                    //フラグがcode_padstartなら、サンプルcode_padstart表示
+                    case 'code_padstart':
+                        code_padstart.classList.remove('hidden');
+                        break;
+                    //フラグがsample3なら、サンプルsample3表示
+                    case 'sample3':
+                        sample2.classList.add('hidden');
+                        code_padstart.classList.add('hidden');
+                        sample3.classList.remove('hidden');
                         break;
                 }
                 //インクリメント
