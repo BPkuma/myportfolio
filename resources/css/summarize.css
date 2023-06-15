@@ -5,25 +5,38 @@
   border-radius: 10px;
 }
 
+/*会話▼の位置固定*/
+.confirm {
+  position: absolute;
+  right: 73%;
+  top: 48%;
+}
+
 /*あしあとメニュー*/
 /* .footprints {
   margin-top: 70%;
 } */
 
-/*はい、いいえ選択肢*/
+/*はい、いいえ選択肢*************/
 .yesno {
   width: 25%;
   right: 55%;
+  position: absolute;
+  top: 43%;
+  opacity: 0.8;
+  height: 90px;
 }
-/**/
+
+
+/*画像******************************/
+/* 画像を横並びにする */
 div.img_box {
-  display: flex; /* 画像を横並びにする */
+  display: flex; 
   
 }
-
-img.jasco, img.slim {
-  margin-right: 400px; /* 画像の間隔を調整 */  
-
+/* 画像の間隔を調整 */
+img.jasco, img.slime {
+  margin-right: 200px;   
 }
 
 
