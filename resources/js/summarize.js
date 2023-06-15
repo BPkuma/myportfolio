@@ -1,6 +1,6 @@
 'use strict';
 //DOMが読み込まれたら////////////////////////////////////////////
-document.addEventListener('DOMContentLoaded', () => {
+//document.addEventListener('DOMContentLoaded', () => {
     //スタート画面/////////////////////////////////////////////////
     //▶カーソルを定数choose1,choose2,shoose3に代入
     const choose1 = document.getElementById('choose1');
@@ -76,10 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sample_counter = countDown(goal);
     //テンプレートリテラルで作ったテキストを定数sample_timeに代入
     const sample_time = `${sample_counter[1]}時間${sample_counter[2]}分${sample_counter[3]}秒`;
-    //サンプルを表示させるタイミングのための定数sample/sample2を定義
+    //サンプルを表示させるタイミングのための定数sample/sample2/sample3を定義
     const sample = document.querySelector('.sample');
     const sample2 = document.querySelector('.sample2');
     const sample3 = document.querySelector('.sample3');
+    //サンプルを表示させるための定数sampleを定義
+    const sample_timer = document.getElementById('sample_timer');
 
     //定数todayが存在していた場合
     if(today) {
@@ -130,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //recalc()を1秒ごとに繰り返し実行
     setInterval(recalc, 1000);
     //残り時間のサンプル表示
-    document.getElementById('sample_timer').textContent = sample_time;
-    
+    if (sample_timer) {
+        sample_timer.textContent = sample_time;
+    }    
     //画像をアニメっぽく/////////////////////////////////////////
     //特定の画像を指定する用の変数indexを初期化
     let jasco_index = 0;
@@ -349,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
             yesno.classList.add('hidden');
         }
     }
-});
+//});
 
 
 
