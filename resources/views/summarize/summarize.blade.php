@@ -2,7 +2,7 @@
    <slot>
     <!-- タイトル -->
     <div class="bg-black h-screen text-white">
-        <h1 class="text-center font-medium text-7xl pt-5">
+        <h1 class="text-center font-medium text-7xl">
             JavaScript<br>
             <span class="text-5xl">
             おさらい
@@ -10,9 +10,9 @@
         </h1>
         
         <!-- 選択肢/ステータス -->
-        <div>
+        <div class="menu">
             <!-- 選択肢 -->
-            <ul class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5">
+            <ul class="corner p-4 border-2 border-white mt-20">
                 <li id="summarize" class="text-white cursor-pointer">
                     <span id="choose1">▶</span>
                     &nbsp;&nbsp;<a href="countdown">おさらい&nbsp;をはじめる
