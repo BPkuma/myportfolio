@@ -118,7 +118,7 @@
     //タイムスタンプにした一日の終わりマイナス現在
     const diff = goal.getTime() - now.getTime();    
     //コンソールに出力
-    console.log(deff);
+    console.log(diff);
     
     //出力結果：46048000
     </code></pre>
