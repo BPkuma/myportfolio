@@ -1,7 +1,11 @@
 @charset 'UTF-8';
+
 /**コンテナー************/
 .container {
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  max-width: 100%;
 }
 
 /*タイトル*/
@@ -35,7 +39,7 @@ h1 {
 /*会話▼の位置固定*/
 .confirm {
   top: 70%;
-  left: 38%;
+  left:50%;
 }
 
 
@@ -47,37 +51,38 @@ h1 {
 }
 
 .yesnochild {
-  top: 53%;
-  left: 15%;
+  bottom: 20%;
+  left: 45%;
   width: 8%;
 }
 
 
 /*画像******************************/
 /* 画像を横並びにする */
-div.img_box {
-  display: flex; 
+.img_box {
+  display: flex;
+  margin-left: 25%; 
   
 }
 
 .images {
   width: 400px;
-  margin-left: 25%;
+}
+/*セリフ戻るボタン*********/
+.back_button {
+  left: 30%;
 }
 
-.slimeside {
-  margin-left: 8%;
+/*よびのカウントダウンタイマー*/
+.sample, .sample2, .sample3  {
+  margin: 3% auto;
 }
 
 /*コードの位置**************/
-/* .code-toolbar {
-  padding: 0 15%;
-  background-color: black;
-} */
-
 .codearea {
   padding: 0 15%;
   background-color: black;
+  margin-top: 3%;
 }
 
 /*************幅px以下のレイアウト*********************************/
