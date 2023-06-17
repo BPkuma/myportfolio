@@ -1,8 +1,8 @@
 <x-app-layout>    
     <slot>
         <!-- カウントダウンタイマーのページ -->        
-            <div class="bg-black h-screen text-white">   
-                <div class="container">        
+        <div class="bg-black h-screen text-white">   
+            <div class="container">        
                 <!--あしあと-->
                 {{-- <div class="pt-5">
                     <div class="footprints corner p-4 border-2 border-white w-2/5 ml-5"> 
@@ -21,8 +21,8 @@
                 </div> --}}
                 <!-- カウントダウンタイマー・サンプル表示 -->
                 <div class="realsample pt-24">           
-                    <div class="corner p-4 border-2 border-white w-2/5 ml-5">                
-                        <div class>
+                    <div class="corner p-4 border-2 border-white w-2/5 m-auto">                
+                        <div class="text-center">
                             <p><span id="today"></span>は
                             </p>
                             <p>あと<span id="timer"></span> で終わります。
@@ -34,7 +34,7 @@
                 <!--画像エリア-->
                 <div class="img_box flex items-center justify-center">
                     <!--ジャスコの画像-->
-                    <div class="mt-5 images flex-shrink-0">
+                    <div class="mt-5 images jascoside flex-shrink-0">
                         <img class="jasco w-1/5" src="{{ asset('image_jasco/jasco01.png') }}" alt="ジャスコ">
                         <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco02.png') }}" alt="ジャスコ">
                         <img class="jasco w-1/5 hidden" src="{{ asset('image_jasco/jasco03.png') }}" alt="ジャスコ">
@@ -63,14 +63,15 @@
                 <!--ジャスコセリフ-->
                 <!--data-dialogues属性にJSON形式にエンコードしたdialoguesを設定-->
                 <div id="dialogues" class="relative " data-dialogues="{{ json_encode($dialogues) }}">                                    
-                    <div class="corner p-4 border-2 border-white w-2/5 ml-5 h-40 cursor-pointer">                        
+                    <div class="corner p-4 border-2 border-white w-2/5 m-auto h-40 cursor-pointer">                        
                     @foreach($dialogues as $dialogue)       
                             <!--Dialoguesテーブルからセリフ取得-->                       
-                            <p id="talk"></p>
+                            <p id="talk" class="user_name" data-user-name="{{Auth::user()->name ?? 'ななし'}}"></p>
                     @endforeach 
-                        <span class="confirm absolute cursor-pointer flex justify-center">▼</span>
+                        <span class="confirm absolute cursor-pointer flex justify-center">▼</span>                        
                     </div>                     
                 </div>
+                <span class="back_button absolute cursor-pointer flex justify-center">◀もどる</span>
                 <!--はいorいいえ-->
                 <div class="yesno relative hidden">
                     <div class="yesnochild absolute corner  p-4 border-2 border-white w-6/12 ml-5">
@@ -207,8 +208,10 @@
                 <!--code_rewriteコードここまで-->
 
                 <!--解説中にサンプル表示1-->
-                <div class="sample mt-5 text-center hidden">
-                    <p>残り時間<span id="sample_timer"></span></p>    
+                <div class="corner p-4 border-2 border-white w-2/5 sample text-center hidden">                
+                    {{-- <div class="sample mt-5 text-center hidden"> --}}
+                        <p>残り時間<span id="sample_timer"></span></p>    
+                    </div>
                 </div>
 
                 <!--code_recalcコードはじまり-->
@@ -228,7 +231,7 @@
                 <!--code_recalcコードここまで-->
 
                 <!--解説中にサンプル表示2-->
-                <div class="sample2 mt-5 text-center hidden">
+                <div class="corner p-4 border-2 border-white w-2/5 sample2 text-center hidden">
                     <p>残り時間<span id="sample_timer2"></span></p>    
                 </div>
 
@@ -251,7 +254,7 @@
                 <!--code_padstartコードここまで-->
 
                 <!--解説中にサンプル表示3-->
-                <div class="sample3 mt-5 text-center hidden">
+                <div class="corner p-4 border-2 border-white w-2/5 sample3 text-center hidden">
                     <p>残り時間<span id="sample_timer3"></span></p>    
                 </div> 
  
