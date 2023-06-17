@@ -17,7 +17,7 @@
                     <span id="choose1">▶</span>
                     &nbsp;&nbsp;<a href="countdown">おさらい&nbsp;をはじめる
                     </a>
-                </li>
+                </li>                
                 <li id="state" class="text-white cursor-pointer">
                     <span id="choose2" class="hidden">▶</span>
                     &nbsp;&nbsp;ステータス&nbsp;をかくにんする
@@ -26,9 +26,14 @@
                     <span id="choose3" class="hidden">▶</span>
                     &nbsp;&nbsp;にげる
                 </li>
+                <li id="reference" class="text-white cursor-pointer">
+                    <span id="choose4" class="hidden">▶</span>
+                    &nbsp;&nbsp;<a href="#">さんこう&nbsp;しりょう
+                    </a>
+                </li>
             </ul>
             <!-- ステータス -->
-            <div id="state_data" class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5 hidden">                
+            <div id="state_data" class="corner p-4 border-2 border-white mt-5 hidden">                
                 <p>
                 {{Auth::user()->name ?? "ななし"}}
                 </p>
@@ -37,11 +42,20 @@
                 </p>
             </div>
             <!-- 逃げたとき -->
-            <div id="run_data" class="corner p-4 border-2 border-white w-6/12 mt-5 ml-5 hidden">                
+            <div id="run_data" class="corner p-4 border-2 border-white mt-5 hidden">                
                 <p>
                 しかし、まわりこまれた！！！
                 </p>                
             </div>
+            <!--さんこうしりょう-->
+            <div id="reference_data" class="corner p-4 border-2 border-white mt-5 hidden">                
+                <ul>
+                    <li>書籍名:確かな力が身につく JavaScript「超入門」</li>
+                    <li>著者:狩野祐東</li>
+                    <li>出版年:2019年</li>
+                </ul>           
+            </div>
+
         </div>
     </div>
    </slot>
