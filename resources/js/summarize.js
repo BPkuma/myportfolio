@@ -216,8 +216,6 @@
     const talk = document.getElementById('talk');    
     //confirm要素を定数confirmに代入
     const confirm = document.querySelector('.confirm');
-    //cursor-pointer要素を定数cursor_pointerに代入
-    const cursor_pointer = document.querySelector('.cursor-pointer');
     //back_button要素を定数back_buttonに代入
     const back_button = document.querySelector('.back_button');
     //yesno要素を定数yesnoに代入
@@ -225,7 +223,7 @@
     //yes・no要素を定数yes・noに代入
     const yes = document.querySelector('.yes');
     const no = document.querySelector('.no');
-    //yesno選択肢の▶#yesno_choose1・2要素を定数yesno_choose1・2に代入
+    //はい、いいえ選択肢の▶#yesno_choose1・2要素を定数yesno_choose1・2に代入
     const yesno_choose1 = document.getElementById('yesno_choose1');
     const yesno_choose2 = document.getElementById('yesno_choose2');
     //各コードの要素を定数に代入///////////////////////////////////////////////////////
@@ -272,11 +270,15 @@
                 let dialogue_username = dialogues[current_index].talk.replace('ななし', user_name);
                 talk.textContent = dialogue_username;
                 break;
-            //フラグがqなら、yesno選択肢表示
+            //フラグがqなら
             case 'q':
+                //はい、いいえ選択肢表示
                 yesno.classList.remove('hidden');
+                //▼ボタン非表示
                 confirm.classList.add('hidden');
-                /* dialoguesElement.classList.remove('cursor-pointer'); */
+                //セリフ枠のcursor-pointerを無効に           
+                dialoguesElement.classList.remove('cursor-pointer');
+                dialoguesElement.style.pointerEvents = 'none';     
                 break;
             //フラグがslimeなら、スライム君登場
             case 'slime':                
@@ -352,8 +354,8 @@
 
     //confirmがnullではない場合
     if (confirm !== null) {
-        //cursor_pointerがクリックされたら
-        cursor_pointer.addEventListener('click', function() {             
+        //dialoguesElementがクリックされたら
+        dialoguesElement.addEventListener('click', function() {             
             //current_indexがオブジェクトの個数より少なかったら
             if(current_index  < dialogues.length) {
                 //次のセリフに書き換え
@@ -383,7 +385,7 @@
         });
     }
 
-    //yesno選択肢が存在する場合
+    //はい、いいえ選択肢が存在する場合
     if(yesno !== null) {
         //yesにマウスオーバーしたら
         yes.addEventListener('mouseover', function() {
@@ -397,6 +399,12 @@
         });
         //yesがクリックされたら
         yes.addEventListener('click', function() {
+            //dialoguesElementにcursor-pointerクラスが無い場合
+            if (!dialoguesElement.classList.contains('cursor-pointer')) {
+                //cursor-pointer機能追加
+                dialoguesElement.classList.add('cursor-pointer');
+                dialoguesElement.style.pointerEvents = '';
+            }
             //次のセリフ表示
             showDialogue(dialogues[++current_index]);
             //フラグチェックする
@@ -408,6 +416,12 @@
         });
         //back_buttonがクリックされたら
         back_button.addEventListener('click', function() { 
+            //dialoguesElementにcursor-pointerクラスが無い場合
+            if (!dialoguesElement.classList.contains('cursor-pointer')) {
+                //cursor-pointer機能追加
+                dialoguesElement.classList.add('cursor-pointer');
+                dialoguesElement.style.pointerEvents = '';
+            }
             //はい、いいえ選択肢を非表示 
             yesno.classList.add('hidden');
             //▼ボタンを表示
