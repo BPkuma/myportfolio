@@ -62,8 +62,8 @@
                 </div>
                 <!--ジャスコセリフ-->
                 <!--data-dialogues属性にJSON形式にエンコードしたdialoguesを設定-->
-                <div id="dialogues" class="relative " data-dialogues="{{ json_encode($dialogues) }}">                                    
-                    <div class="corner p-4 border-2 border-white w-2/5 m-auto h-40 cursor-pointer">                        
+                <div id="dialogues" class="relative cursor-pointer" data-dialogues="{{ json_encode($dialogues) }}">                                    
+                    <div class="corner p-4 border-2 border-white w-2/5 m-auto h-40">                        
                     @foreach($dialogues as $dialogue)       
                             <!--Dialoguesテーブルからセリフ取得-->                       
                             <p id="talk" class="user_name" data-user-name="{{Auth::user()->name ?? 'ななし'}}"></p>
