@@ -236,10 +236,7 @@
     const code_html = document.querySelector('.code_html');
     const code_rewrite = document.querySelector('.code_rewrite');
     const code_recalc = document.querySelector('.code_recalc');
-    const code_padstart = document.querySelector('.code_padstart');
-
-    
-
+    const code_padstart = document.querySelector('.code_padstart');   
     //空の配列を変数dialoguesに代入
     let dialogues = [];    
     //定数dialoguesElementがnullではない場合
@@ -247,9 +244,10 @@
     //data-dialogues属性の値を取得し、JSオブジェクトに変換後、変数dialoguesに代入
     dialogues = JSON.parse(dialoguesElement.getAttribute('data-dialogues'));
     }
+    console.log(dialogues);
     //オブジェクトの順番を表すための変数current_indexを0に初期化
-    let current_index = 0;
-
+    let current_index = 0;  
+   
     //JSオブジェクトのプロパティtalkに書き換えるファンクション
     function showDialogue(dialogue) {
         //引数のJSオブジェクトとそのプロパティが存在したら
@@ -259,7 +257,7 @@
         } 
     }
     //実行
-    showDialogue(dialogues[current_index]);   
+    showDialogue(dialogues[current_index]); 
     
     //flagカラムの値によって表示・非表示をコントロールするファンクション
     function handleDialogueFlag(flag) {
@@ -352,6 +350,17 @@
         }
     }
 
+    const order = dialogues[current_index].order;
+    //flagの値からorder番号を割り出すファンクション//
+    function getOrderNumber(dialogues, flag) {
+        for(const dialogue of dialogues) {
+            if(dialogue.flag === flag) {
+               return dialogue.order;
+            }            
+        }
+        return null;
+    } 
+
     //confirmがnullではない場合
     if (confirm !== null) {
         //dialoguesElementがクリックされたら
@@ -372,11 +381,30 @@
                 showDialogue(dialogues[--current_index]);
                 //フラグチェックする
                 handleDialogueFlag(dialogues[current_index].flag); 
-                //dialoguesのorder番号が10より小さかったら（スライム登場前）
-                if(dialogues[current_index].order < 10) {
-                    //スライム画像非表示
-                    hideImageSlime();                    
+
+                /* switch(true) {
+                    case getOrderNumber(dialogues, 'slime'):
+                        hideImageSlime();
+                        break;
+                    case getOrderNumber(dialogues, 'code_now'):
+                        code_now.classList.add('hidden');
+                        break;
                 }
+ */
+                //セリフのオーダー番号を定数orderに代入
+                //const order = dialogues[current_index].order;
+                switch(true) {
+                    case order < 10:
+                        hideImageSlime();
+                        break;
+                    //case order 
+                    
+                }
+                    //dialoguesのorder番号が10より小さかったら（スライム登場前）
+                    //if(dialogues[current_index].order < 10) {
+                        //スライム画像非表示
+                        //hideImageSlime();                    
+                    //}
             //current_indexが0なら
             } else if (current_index == 0) {
                 //0番目のセリフ表示
