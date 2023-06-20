@@ -156,8 +156,8 @@
     //特定の画像を指定する用の変数indexを初期化
     let jasco_index = 0;
     let slime_index = 0;
-    let timer_id = null;
-    let interval_id = null;
+    //setIntervalのidを格納するための配列を定数interval_idsに代入
+    let interval_ids = [];
     //ジャスコの画像を順番に表示させるShowImageJasco()作成
     function ShowImageJasco() {        
         //全てのジャスコ画像を取得し、定数jImagesに代入
@@ -195,11 +195,15 @@
     //スライム表示を取り消すファンクション
     function hideImageSlime() {
         //画像が存在したら
-        if(sImages.length > 0) { 
+        if(sImages.length >= 0) { 
             //全ての画像にhidden追加
             for (let i = 0; i < sImages.length; i++) {
                 sImages[i].classList.add('hidden');
-            }             
+            }
+            for (let i = 0; i < interval_ids.length; i++) {
+                clearInterval(interval_ids[i]);
+            } 
+            interval_ids = [];
         }
     }
     //ShowImageJasco()を繰り返し実行
@@ -245,7 +249,7 @@
     //data-dialogues属性の値を取得し、JSオブジェクトに変換後、変数dialoguesに代入
     dialogues = JSON.parse(dialoguesElement.getAttribute('data-dialogues'));
     }
-    //0を変数current_indexに代入
+    //オブジェクトの順番を表すための変数current_indexを0に初期化
     let current_index = 0;
 
     //JSオブジェクトのプロパティtalkに書き換えるファンクション
@@ -272,16 +276,11 @@
             case 'q':
                 yesno.classList.remove('hidden');
                 confirm.classList.add('hidden');
+                /* dialoguesElement.classList.remove('cursor-pointer'); */
                 break;
             //フラグがslimeなら、スライム君登場
-            case 'slime':
-                
-                timer_id = setTimeout(ShowImageSlime, 300);
-                interval_id = setInterval(ShowImageSlime, 1500);
-                /* console.log(dialogues[current_index].order); */
-                /* if (dialogues[current_index] < 9) {           
-                    hideImageSlime();
-                } */
+            case 'slime':                
+                interval_ids.push(setInterval(ShowImageSlime, 1500));
                 break;
             //フラグがcode_nowなら、コードcode_now表示
             case 'code_now':
@@ -344,103 +343,97 @@
             case 'sample3':
                 code_padstart.classList.add('hidden');
                 sample3.classList.remove('hidden');
-                break;           
-
+                break;
+            case 'end':
+                window.location.href = '/summarize';
+                break;   
         }
     }
 
     //confirmがnullではない場合
     if (confirm !== null) {
         //cursor_pointerがクリックされたら
-        cursor_pointer.addEventListener('click', function() {    
+        cursor_pointer.addEventListener('click', function() {             
             //current_indexがオブジェクトの個数より少なかったら
             if(current_index  < dialogues.length) {
-                if(current_index <= 0) {
-                    showDialogue(dialogues[0]);
-                    current_index++;
-                }  else {
-                    showDialogue(dialogues[current_index]); 
-                //showDialogue()実行
-                showDialogue(dialogues[current_index]);
-                }
-                //会話内容にフラグがあった場合 
-                handleDialogueFlag(dialogues[current_index].flag);                
-                //インクリメント
-               current_index++;           
-
-            }  //最後のページだったら、トップ画面に遷移させる
-            else if (current_index == dialogues.length) {
-                window.location.href = '/summarize';
-            }            
+                //次のセリフに書き換え
+                showDialogue(dialogues[++current_index]);
+                //フラグチェックする
+                handleDialogueFlag(dialogues[current_index].flag);    
+            }  
         });
         //back_buttonがクリックされたら
         back_button.addEventListener('click', function() {
-            if(current_index < dialogues.length) {
-                if (current_index <= 9) {
-                    hideImageSlime();
-                    clearTimeout(timer_id);            
-                    clearInterval(interval_id);
-                    timer_id = null;
-                    interval_id = null;                    
-                }  
-                if(current_index <= 0) {
-                    showDialogue(dialogues[0]);
-                } else {
-                    showDialogue(dialogues[current_index]); 
+            //current_indexが0より大きかったら
+            if(current_index  > 0) {
+                //1つ前のセリフに書き換え
+                showDialogue(dialogues[--current_index]);
+                //フラグチェックする
+                handleDialogueFlag(dialogues[current_index].flag); 
+                //dialoguesのorder番号が10より小さかったら（スライム登場前）
+                if(dialogues[current_index].order < 10) {
+                    //スライム画像非表示
+                    hideImageSlime();                    
                 }
-                //会話内容にフラグがあった場合
-                handleDialogueFlag(dialogues[current_index].flag);                
-                //デクリメント
-               current_index--;
-            } 
-                      
+            //current_indexが0なら
+            } else if (current_index == 0) {
+                //0番目のセリフ表示
+                showDialogue[0];
+            }                 
         });
-    }     
+    }
 
     //yesno選択肢が存在する場合
     if(yesno !== null) {
         //yesにマウスオーバーしたら
         yes.addEventListener('mouseover', function() {
+            //yesno_choose1を表示
             toggleHidden(yesno_choose1, [yesno_choose2]);    
         });
         //noにマウスオーバーしたら
         no.addEventListener('mouseover', function() {
+            //yesno_choose2を表示
             toggleHidden(yesno_choose2, [yesno_choose1]);    
         });
         //yesがクリックされたら
         yes.addEventListener('click', function() {
-            showDialogue(dialogues[current_index]);
+            //次のセリフ表示
+            showDialogue(dialogues[++current_index]);
+            //フラグチェックする
+            handleDialogueFlag(dialogues[current_index].flag);
+            //はい、いいえ選択肢非表示
             yesno.classList.add('hidden');
+            //▼ボタン表示
             confirm.classList.remove('hidden');
         });
         //back_buttonがクリックされたら
-        back_button.addEventListener('click', function() {
-            showDialogue(dialogues[current_index]);;
+        back_button.addEventListener('click', function() { 
+            //はい、いいえ選択肢を非表示 
             yesno.classList.add('hidden');
+            //▼ボタンを表示
             confirm.classList.remove('hidden');
             //フラグチェックする
             handleDialogueFlag(dialogues[current_index].flag); 
         });
-        
+
         //noがクリックされたら
-        no.addEventListener('click', function() {  
+        no.addEventListener('click', function() { 
+            //loop_index = current_index - 1; 
+            console.log(current_index);
             //固定セリフ          
-            forever();
-            //会話ループのための定数loop_index定義
-            const loop_index = current_index - 1;
-            setTimeout(function() {
-                showDialogue(dialogues[loop_index]);
-            }, 1000);   
-            yesno.classList.remove('hidden');                    
+            forever();    
         });
 
         //no選択時の固定セリフ
         function forever() {
+            //セリフ書き換え
             talk.textContent = 'ジャスコ「え？よくきこえませんでした。」';
-            yesno.classList.add('hidden');
-        }
+            //1秒後にセリフ書き換え
+            setTimeout(function() {
+                showDialogue(dialogues[current_index]);
+            }, 1000); 
+        }        
     }
-//});
 
 
 
