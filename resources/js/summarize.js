@@ -200,9 +200,11 @@
             for (let i = 0; i < sImages.length; i++) {
                 sImages[i].classList.add('hidden');
             }
+            //全てのinterval_idsを停止
             for (let i = 0; i < interval_ids.length; i++) {
                 clearInterval(interval_ids[i]);
             } 
+            //interval_idsを初期化
             interval_ids = [];
         }
     }
@@ -244,7 +246,6 @@
     //data-dialogues属性の値を取得し、JSオブジェクトに変換後、変数dialoguesに代入
     dialogues = JSON.parse(dialoguesElement.getAttribute('data-dialogues'));
     }
-    console.log(dialogues);
     //オブジェクトの順番を表すための変数current_indexを0に初期化
     let current_index = 0;  
    
@@ -264,8 +265,11 @@
         switch (flag) {
             //フラグがuser_nameなら
             case 'user_name':
+                //ユーザーの名前を取得し、変数user_nameに代入
                 let user_name = document.querySelector('.user_name').getAttribute('data-user-name');
+                //talkに「ななし」という文字列があったらuser_nameに置き換える
                 let dialogue_username = dialogues[current_index].talk.replace('ななし', user_name);
+                //talkを書き換える
                 talk.textContent = dialogue_username;
                 break;
             //フラグがqなら
@@ -350,14 +354,17 @@
         }
     }
 
-    const order = dialogues[current_index].order;
+    
     //flagの値からorder番号を割り出すファンクション//
     function getOrderNumber(dialogues, flag) {
         for(const dialogue of dialogues) {
+            //dialogueのflag値と第二引数のflag値が一致したら
             if(dialogue.flag === flag) {
-               return dialogue.order;
+                //order番号を返す
+                return dialogue.order;
             }            
         }
+        //一致しなかったら
         return null;
     } 
 
@@ -382,29 +389,106 @@
                 //フラグチェックする
                 handleDialogueFlag(dialogues[current_index].flag); 
 
-                /* switch(true) {
-                    case getOrderNumber(dialogues, 'slime'):
+                //セリフのオーダー番号を定数orderに代入
+                const order = dialogues[current_index].order;
+                switch(true) {
+                    //オーダー番号がフラグslimeのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'slime'):
+                        //スライム画像非表示
                         hideImageSlime();
                         break;
-                    case getOrderNumber(dialogues, 'code_now'):
+                    //オーダー番号がフラグcode_nowのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_now'):
+                        //code_now非表示
                         code_now.classList.add('hidden');
                         break;
-                }
- */
-                //セリフのオーダー番号を定数orderに代入
-                //const order = dialogues[current_index].order;
-                switch(true) {
-                    case order < 10:
-                        hideImageSlime();
+                    //オーダー番号がフラグcode_goalのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_goal'):
+                        //code_goal非表示
+                        code_goal.classList.add('hidden');
+                        //code_now表示
+                        code_now.classList.remove('hidden');
                         break;
-                    //case order 
-                    
-                }
-                    //dialoguesのorder番号が10より小さかったら（スライム登場前）
-                    //if(dialogues[current_index].order < 10) {
-                        //スライム画像非表示
-                        //hideImageSlime();                    
-                    //}
+                    //オーダー番号がフラグcode_subtractionのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_subtraction'):
+                        //code_subtraction非表示
+                        code_subtraction.classList.add('hidden');
+                        //code_goal表示
+                        code_goal.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_hmsのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_hms'):
+                        //code_hms非表示
+                        code_hms.classList.add('hidden');
+                        //code_subtraction表示
+                        code_subtraction.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_countdownのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_countdown'):
+                        //code_countdown非表示
+                        code_countdown.classList.add('hidden');
+                        //code_hms表示
+                        code_hms.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_backquoteのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_backquote'):
+                        //code_backquote非表示
+                        code_backquote.classList.add('hidden');
+                        //code_countdown表示
+                        code_countdown.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_htmlのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_html'):
+                        //code_html非表示
+                        code_html.classList.add('hidden');
+                        //code_backquote表示
+                        code_backquote.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_rewriteのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_rewrite'):
+                        //code_rewrite非表示
+                        code_rewrite.classList.add('hidden');
+                        //code_html表示
+                        code_html.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグsampleのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'sample'):
+                        //sample非表示
+                        sample.classList.add('hidden');
+                        //code_rewrite表示
+                        code_rewrite.classList.remove('hidden');
+                        //code_html表示
+                        code_html.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_recalcのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_recalc'):
+                        //code_recalc非表示
+                        code_recalc.classList.add('hidden');
+                        //sample表示
+                        sample.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグsample2のオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'sample2'):
+                        //sample2非表示
+                        sample2.classList.add('hidden');
+                        //code_recalc表示
+                        code_recalc.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグcode_padstartのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'code_padstart'):
+                        //code_padstart非表示
+                        code_padstart.classList.add('hidden');
+                        //sample2表示
+                        sample2.classList.remove('hidden');
+                        break;
+                    //オーダー番号がフラグsample3のオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'sample3'):
+                        //sample3非表示
+                        sample3.classList.add('hidden');
+                        //code_padstart表示
+                        code_padstart.classList.remove('hidden');
+                        break;                    
+                }                
             //current_indexが0なら
             } else if (current_index == 0) {
                 //0番目のセリフ表示
