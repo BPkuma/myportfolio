@@ -3,22 +3,6 @@
         <!-- カウントダウンタイマーのページ -->        
         <div class="bg-black h-screen text-white">   
             <div class="container">        
-                <!--あしあと-->
-                {{-- <div class="pt-5">
-                    <div class="footprints corner p-4 border-2 border-white w-2/5 ml-5"> 
-                            <h2>あしあと&nbsp;&nbsp;&nbsp;&nbsp;<span id="open">▼</span></h2>
-                        <nav>
-                            <ul class="hidden">
-                                <li><a href="#section1">タイムスタンプにして引き算</a></li>
-                                <li><a href="#section2">引き算した結果を時、分、秒に計算しなおす</a></li>
-                                <li><a href="#section3">テンプレートリテラルでテキストを作成する</a></li>
-                                <li><a href="#section4">htmlを書き換える</a></li>
-                                <li><a href="#section5">別の表示方法</a></li>
-                                <li><a href="../06_reference/reference.html">参考資料</a></li>
-                            </ul>
-                        </nav>
-                    </div> 
-                </div> --}}
                 <!-- カウントダウンタイマー・サンプル表示 -->
                 <div class="realsample pt-24">           
                     <div class="corner p-4 border-2 border-white w-2/5 m-auto">                
@@ -71,15 +55,16 @@
                         <span class="confirm absolute cursor-pointer flex justify-center">▼</span>                        
                     </div>                     
                 </div>
+                <div>
                 <span class="back_button absolute cursor-pointer flex justify-center">◀もどる</span>
+                </div>
                 <!--はいorいいえ-->
                 <div class="yesno relative hidden">
-                    <div class="yesnochild absolute corner  p-4 border-2 border-white w-6/12 ml-5">
+                    <div class="yesnochild corner  p-4 border-2 border-white w-6/12 ml-5">
                         <div class="yes cursor-pointer"><span id="yesno_choose1">▶</span>はい</div>
                         <div class="no cursor-pointer"><span id="yesno_choose2" class="hidden">▶</span>いいえ</div>
                     </div>
                 </div>
-
                 <!--code_nowコードはじまり-->
                 <div class="codearea pt-20 code_now hidden">           
                     <pre><code class="language-JavaScript">
@@ -207,13 +192,15 @@
                 </div>
                 <!--code_rewriteコードここまで-->
 
-                <!--解説中にサンプル表示1-->
-                <div class="corner p-4 border-2 border-white w-2/5 sample text-center hidden">                
-                    {{-- <div class="sample mt-5 text-center hidden"> --}}
-                        <p>残り時間<span id="sample_timer"></span></p>    
-                    </div>
+                <!--サンプル表示1の補足見出し（テキストはjsで都度書き換え）-->
+                <div class="pt-4 w-2/5 supplement">
+                    <p class="appear hidden"><i class="fa-solid fa-exclamation fa-beat"></i>&nbsp;<span class="appear_text"></span>&nbsp;<i class="fa-solid fa-exclamation fa-beat"></i></p>
                 </div>
-
+                <!--解説中にサンプル表示1-->
+                <div class="corner p-4 mt-0 border-2 border-white w-2/5 sample text-center hidden">                
+                        <p>残り時間<span id="sample_timer"></span></p>    
+                </div>
+           
                 <!--code_recalcコードはじまり-->
                 <div class="codearea pt-20 code_recalc hidden">
                     <pre><code class="language-JavaScript">
@@ -229,7 +216,11 @@
                     </code></pre>
                 </div>
                 <!--code_recalcコードここまで-->
-
+                
+                <!--サンプル表示2の補足見出し（テキストは都度jsで書き換え）-->
+                <div class="pt-4 w-2/5 supplement">
+                    <p class="recalc_ok hidden"><i class="fa-solid fa-exclamation fa-beat"></i>&nbsp;<span class="recalc_ok_text"></span>&nbsp;<i class="fa-solid fa-exclamation fa-beat"></i></p>
+                </div>
                 <!--解説中にサンプル表示2-->
                 <div class="corner p-4 border-2 border-white w-2/5 sample2 text-center hidden">
                     <p>残り時間<span id="sample_timer2"></span></p>    
@@ -253,13 +244,17 @@
                 </div>
                 <!--code_padstartコードここまで-->
 
+                <!--サンプル表示3の補足見出し（（テキストは都度jsで書き換え））-->
+                <div class="pt-4 w-2/5 supplement">
+                    <p class="clear hidden w-2/5"><i class="fa-solid fa-exclamation fa-beat"></i>&nbsp;<span class="clear_text"></span>&nbsp;<i class="fa-solid fa-exclamation fa-beat"></i></p>
+                </div>
                 <!--解説中にサンプル表示3-->
                 <div class="corner p-4 border-2 border-white w-2/5 sample3 text-center hidden">
                     <p>残り時間<span id="sample_timer3"></span></p>    
                 </div> 
- 
-
             </div>
+
+            
         </div>
     </slot>
 </x-app-layout>
