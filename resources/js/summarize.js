@@ -99,6 +99,14 @@
     const sample3 = document.querySelector('.sample3');
     //サンプルを表示させるための定数sampleを定義
     const sample_timer = document.getElementById('sample_timer');
+    //サンプルの補足見出しの要素を定数に代入
+    const appear = document.querySelector('.appear');
+    const appear_text = document.querySelector('.appear_text');
+    const recalc_ok = document.querySelector('.recalc_ok');
+    const recalc_ok_text = document.querySelector('.recalc_ok_text');
+    const clear = document.querySelector('.clear');
+    const clear_text = document.querySelector('.clear_text');
+
 
     //定数todayが存在していた場合
     if(today) {
@@ -324,37 +332,57 @@
             case 'code_rewrite':
                 code_rewrite.classList.remove('hidden');
                 break;
-            //フラグがsampleなら、サンプルsample表示
+            //フラグがsampleなら、サンプルsample、appear表示、補足見出しappear_textを書き換え
             case 'sample':
                 code_html.classList.add('hidden');
                 code_rewrite.classList.add('hidden');
                 sample.classList.remove('hidden');
+                appear.classList.remove('hidden');
+                appear_text.textContent = '表示できた';
+                break;
+            //フラグがto_recalcなら、補足見出しappear_textを書き換え
+            case 'to_recalc':
+                appear_text.textContent = '1秒ごとに繰り返したい';
                 break;
             //フラグがcode_recalcなら、コードcode_recalc表示
             case 'code_recalc':
                 code_recalc.classList.remove('hidden');
                 break;
-            //フラグがsample2なら、サンプルsample2表示
+            //フラグがsample2なら、サンプルsample2、recalc_ok表示、recalc_ok_text書き換え
             case 'sample2':                        
                 code_recalc.classList.add('hidden');
-                sample2.classList.remove('hidden');                        
+                sample2.classList.remove('hidden');  
+                recalc_ok.classList.remove('hidden'); 
+                recalc_ok_text.textContent = '繰り返しできた'                     
+                break;
+            //フラグがarrangeなら、補足見出しrecalc_ok_textを書き換え
+            case 'arrange':                        
+                recalc_ok_text.textContent = '秒の桁をそろえたい';                      
                 break;
             //フラグがcode_padstartなら、サンプルcode_padstart表示
             case 'code_padstart':
                 code_padstart.classList.remove('hidden');
                 break;
-            //フラグがsample3なら、サンプルsample3表示
+            //フラグがsample3なら、サンプルsample3、補足見出しclear表示、clear_text書き換え
             case 'sample3':
                 code_padstart.classList.add('hidden');
                 sample3.classList.remove('hidden');
+                clear.classList.remove('hidden');
+                clear_text.textContent = 'そろった';
                 break;
+            //フラグがcompleteなら、サンプルsample、sample2、補足見出しappear、recalc_ok非表示、clear_text書き換え
+            case 'complete':
+                sample.classList.add('hidden');
+                sample2.classList.add('hidden');
+                appear.classList.add('hidden');
+                recalc_ok.classList.add('hidden');
+                clear_text.textContent = 'よびのカウントダウンタイマー完成';
+                break;
+            //フラグがendなら、トップ画面に戻る
             case 'end':
                 window.location.href = '/summarize';
-                break;   
         }
     }
-
-    
     //flagの値からorder番号を割り出すファンクション//
     function getOrderNumber(dialogues, flag) {
         for(const dialogue of dialogues) {
@@ -367,18 +395,17 @@
         //一致しなかったら
         return null;
     } 
-
     //confirmがnullではない場合
     if (confirm !== null) {
         //dialoguesElementがクリックされたら
-        dialoguesElement.addEventListener('click', function() {             
+        dialoguesElement.addEventListener('click', function() { 
             //current_indexがオブジェクトの個数より少なかったら
             if(current_index  < dialogues.length) {
                 //次のセリフに書き換え
                 showDialogue(dialogues[++current_index]);
-                //フラグチェックする
-                handleDialogueFlag(dialogues[current_index].flag);    
-            }  
+                //フラグチェックする                
+                handleDialogueFlag(dialogues[current_index].flag);
+            } 
         });
         //back_buttonがクリックされたら
         back_button.addEventListener('click', function() {
@@ -388,7 +415,6 @@
                 showDialogue(dialogues[--current_index]);
                 //フラグチェックする
                 handleDialogueFlag(dialogues[current_index].flag); 
-
                 //セリフのオーダー番号を定数orderに代入
                 const order = dialogues[current_index].order;
                 switch(true) {
@@ -455,11 +481,17 @@
                     case order < getOrderNumber(dialogues, 'sample'):
                         //sample非表示
                         sample.classList.add('hidden');
+                        //補足見出しappear非表示
+                        appear.classList.add('hidden');
                         //code_rewrite表示
                         code_rewrite.classList.remove('hidden');
                         //code_html表示
                         code_html.classList.remove('hidden');
                         break;
+                    //オーダー番号がフラグarrangeのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'arrange'):
+                        //補足見出しrecalc_ok_textを書き換え
+                        recalc_ok_text.textContent = '繰り返しできた';
                     //オーダー番号がフラグcode_recalcのオーダー番号より小さかったら
                     case order < getOrderNumber(dialogues, 'code_recalc'):
                         //code_recalc非表示
@@ -471,6 +503,8 @@
                     case order < getOrderNumber(dialogues, 'sample2'):
                         //sample2非表示
                         sample2.classList.add('hidden');
+                        //補足見出しrecalc_ok非表示
+                        recalc_ok.classList.add('hidden');
                         //code_recalc表示
                         code_recalc.classList.remove('hidden');
                         break;
@@ -485,18 +519,24 @@
                     case order < getOrderNumber(dialogues, 'sample3'):
                         //sample3非表示
                         sample3.classList.add('hidden');
+                        //補足見出しclear非表示
+                        clear.classList.add('hidden');
                         //code_padstart表示
                         code_padstart.classList.remove('hidden');
-                        break;                    
+                        break;   
+                    //オーダー番号がフラグcompleteのオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'complete'):
+                        //clear_text書き換え
+                        clear_text.textContent = 'そろった';
+                        break;                
                 }                
             //current_indexが0なら
             } else if (current_index == 0) {
                 //0番目のセリフ表示
-                showDialogue[0];
-            }                 
+                showDialogue[0];                
+            } 
         });
     }
-
     //はい、いいえ選択肢が存在する場合
     if(yesno !== null) {
         //yesにマウスオーバーしたら
@@ -549,7 +589,6 @@
             //固定セリフ          
             forever();    
         });
-
         //no選択時の固定セリフ
         function forever() {
             //セリフ書き換え
