@@ -8,64 +8,45 @@
   max-width: 100%;
   font-size: large;
 }
-
 /*タイトル*/
 h1 {
-  padding-top: 10%;
+  padding-top: 5%;
 }
-
 /*topメニュー*/
+ul {
+  margin-top: 10%;
+}
 .menu {
   width: 30%;
   margin: 0 auto;
   font-size: large;
 }
-
-/*あしあとメニュー*/
-/* .footprints {
-  float: right;
-} */
-
-/* .realsample {
-  margin: 0 auto;
-} */
-
-
-
 /*セリフの枠*/
 .corner {
   border-radius: 10px;
 }
-
 /*会話▼の位置固定*/
 .confirm {
-  top: 70%;
+  top: 80%;
   left:50%;
 }
-
-
-
 /*はい、いいえ選択肢*************/
 .yesno {
   opacity: 0.8;
   top: -10%;
 }
-
 .yesnochild {
   bottom: 20%;
   left: 45%;
   width: 8%;
+  position: absolute;
 }
-
-
 /*画像******************************/
 /* 画像を横並びにする */
 .img_box {
   display: flex;
   margin-left: 25%; 
-  
 }
-
 .images {
   width: 400px;
 }
@@ -73,18 +54,61 @@ h1 {
 .back_button {
   left: 30%;
 }
-
-/*よびのカウントダウンタイマー*/
-.sample, .sample2, .sample3  {
-  margin: 3% auto;
+/*よびのカウントダウンタイマーサンプル*/
+.sample {
+  margin: 5% auto 0 auto;
 }
-
+.sample2, .sample3 {
+  margin: 0 auto 0 auto;
+}
+/*サンプルの補足*/
+.supplement {
+  margin: 1% auto 0 auto;
+}
+.appear, .recalc_ok, .clear {
+  width: 100%;
+}
+.appear {
+  margin-top: 5%;
+  margin-bottom: -12%;
+}
+.recalc_ok {
+  margin-bottom: 0;
+}
 /*コードの位置**************/
 .codearea {
   padding: 0 15%;
   background-color: black;
   margin-top: 3%;
 }
+/*************幅1340px以下のレイアウト*********************************/
+@media (max-width: 1330px ) {
+  /*タイトル*/
+  h1 {
+    padding-top: 1%;
+  }
+  /*トップメニュー*/
+  ul {
+    margin-top: 10%;
+  }
 
-/*************幅px以下のレイアウト*********************************/
+  .yesnochild {
+    font-size: small;  
+  }
+  .yes {
+    padding-bottom: 20%;
+  }
+}
+/*************幅940px以下のレイアウト*********************************/
+@media (max-width: 940px ) {
+  .yesnochild {
+    font-size: large;
+    position: relative;
+    left: 80%;
+    width: 15%;
+  }
+  .img_box {
+    margin-left: 30%;
+  }
 
+}
