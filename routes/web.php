@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SummarizeController;
 
 Route::get('post', [PostController::class, 'index'])->name('post.index');
 Route::get('post/create', [PostController::class, 'create'])->name('post.create');
@@ -26,16 +27,27 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::post('/typing/game/{amount}', [PostController::class, 'typing'])->name('typing.game');
+
+Route::get('/summarize', [SummarizeController::class, 'summarize'])->name('summarize');
+Route::get('/countdown', [SummarizeController::class, 'countdown'])/* ->middleware('auth') */->name('countdown');
+Route::get('/countdown', [SummarizeController::class, 'index'])->name('index');
+
+Route::get('/typing/game', [PostController::class, 'typing'])->name('tayping.game');
 
 Route::get('/typing', [PostController::class, 'showConsole'])->name('typing');
 
+////////////////////こんな漢字/////////////////////////////////////////////
 Route::get('/konnakanji', function(){
     return view('konnakanji');
 })->name('konnakanji');
 
+//////////////////順番リスト///////////////////////////////////
 Route::get('/junbanlist', function(){
     return view('junbanlist');
 })->name('junbanlist');
 
+
+///////////////////////////////////////////////////////////
 require __DIR__.'/auth.php';

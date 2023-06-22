@@ -11,4 +11,10 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    //Windows表示バグ対策
+    server: {
+        hmr: {
+            host: 'localhost',
+        },
+    },
 });
