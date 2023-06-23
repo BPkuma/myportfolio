@@ -27,17 +27,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-/////////////////////JavaScriptまとめ//////////////////////////////////////////
+
+Route::post('/typing/game/{amount}', [PostController::class, 'typing'])->name('typing.game');
+
 Route::get('/summarize', [SummarizeController::class, 'summarize'])->name('summarize');
 Route::get('/countdown', [SummarizeController::class, 'countdown'])/* ->middleware('auth') */->name('countdown');
 Route::get('/countdown', [SummarizeController::class, 'index'])->name('index');
 
-////////////////////Ankiタイピング/////////////////////////////////////////////
 Route::get('/typing/game', [PostController::class, 'typing'])->name('tayping.game');
 
-Route::get('/typing', function () {
-    return view('ankityping.ankityping');
-})->name('typing');
+Route::get('/typing', [PostController::class, 'showConsole'])->name('typing');
 
 ////////////////////こんな漢字/////////////////////////////////////////////
 Route::get('/konnakanji', function(){

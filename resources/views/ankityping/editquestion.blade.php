@@ -16,7 +16,7 @@
                     <label for="answaer" class="font-semibold leading-none mt-4">
                         タイピングする文字（半角アルファベットのみ）
                     </label>
-                    <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer', $post->answer)}}" placeholder="answer">
+                    <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer', $post->answer)}}" placeholder="answer" autofocus>
                     </div>
                 </div>
 
