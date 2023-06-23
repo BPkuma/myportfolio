@@ -106,7 +106,8 @@
     const recalc_ok_text = document.querySelector('.recalc_ok_text');
     const clear = document.querySelector('.clear');
     const clear_text = document.querySelector('.clear_text');
-
+    //全てのスライム画像を取得し、定数sImagesに代入
+    const sImages = document.querySelectorAll('img.slime'); 
 
     //定数todayが存在していた場合
     if(today) {
@@ -181,41 +182,7 @@
             //jasco_indexに1を足し、画像数で割った余りを変数jasco_indexに代入   
             jasco_index = (jasco_index + 1) % jImages.length;
         }  
-    }
-
-    //全てのスライム画像を取得し、定数sImagesに代入
-    const sImages = document.querySelectorAll('img.slime'); 
-    //スライムの画像を順番に表示させるShowImageSlime()作成
-    function ShowImageSlime() { 
-        //画像が存在したら
-        if(sImages.length > 0) {     
-            //全ての画像にhidden追加
-            for (let i = 0; i < sImages.length; i++) {
-                sImages[i].classList.add('hidden');
-            }            
-            //slime_index番目の画像からhidden削除 
-            sImages[slime_index].classList.remove('hidden'); 
-            //slime_indexに1を足し、画像数で割った余りを変数slime_indexに代入   
-            slime_index = (slime_index + 1) % sImages.length;
-        }  
-    }
-
-    //スライム表示を取り消すファンクション
-    function hideImageSlime() {
-        //画像が存在したら
-        if(sImages.length >= 0) { 
-            //全ての画像にhidden追加
-            for (let i = 0; i < sImages.length; i++) {
-                sImages[i].classList.add('hidden');
-            }
-            //全てのinterval_idsを停止
-            for (let i = 0; i < interval_ids.length; i++) {
-                clearInterval(interval_ids[i]);
-            } 
-            //interval_idsを初期化
-            interval_ids = [];
-        }
-    }
+    }    
     //ShowImageJasco()を繰り返し実行
     setInterval(ShowImageJasco, 1500);    
 
@@ -292,7 +259,18 @@
                 break;
             //フラグがslimeなら、スライム君登場
             case 'slime':                
-                interval_ids.push(setInterval(ShowImageSlime, 1500));
+                interval_ids.push(setInterval(function(){
+                    if(sImages.length > 0) {     
+                        //全ての画像にhidden追加
+                        for (let i = 0; i < sImages.length; i++) {
+                            sImages[i].classList.add('hidden');
+                        }            
+                        //slime_index番目の画像からhidden削除 
+                        sImages[slime_index].classList.remove('hidden'); 
+                        //slime_indexに1を足し、画像数で割った余りを変数slime_indexに代入   
+                        slime_index = (slime_index + 1) % sImages.length;
+                    }  
+                }, 1500));                
                 break;
             //フラグがcode_nowなら、コードcode_now表示
             case 'code_now':
@@ -420,8 +398,19 @@
                 switch(true) {
                     //オーダー番号がフラグslimeのオーダー番号より小さかったら
                     case order < getOrderNumber(dialogues, 'slime'):
-                        //スライム画像非表示
-                        hideImageSlime();
+                        //スライム画像が存在したら、画像非表示
+                        if(sImages.length >= 0) { 
+                            //全ての画像にhidden追加
+                            for (let i = 0; i < sImages.length; i++) {
+                                sImages[i].classList.add('hidden');
+                            }
+                            //全てのinterval_idsを停止
+                            for (let i = 0; i < interval_ids.length; i++) {
+                                clearInterval(interval_ids[i]);
+                            } 
+                            //interval_idsを初期化
+                            interval_ids = [];
+                        }
                         break;
                     //オーダー番号がフラグcode_nowのオーダー番号より小さかったら
                     case order < getOrderNumber(dialogues, 'code_now'):
