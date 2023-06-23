@@ -13,7 +13,7 @@ h1 {
   padding-top: 5%;
 }
 /*topメニュー*/
-ul {
+.topmenu {
   margin-top: 10%;
 }
 .menu {
@@ -98,15 +98,37 @@ ul {
   .yes {
     padding-bottom: 20%;
   }
+
+  .codearea {
+    padding: 0;
+  }
 }
-/*************幅940px以下のレイアウト*********************************/
-@media (max-width: 940px ) {
+/**************幅1050px以下のレイアウト*/
+@media (max-width: 1050px) {
+  .topmenu {
+    width: 100%;
+  }
+
+  .corner {
+    width: 80%;
+  }
+  
+  .back_button {
+    left: 10%;
+  }
+
   .yesnochild {
     font-size: large;
     position: relative;
     left: 80%;
     width: 15%;
   }
+}
+
+
+/*************幅940px以下のレイアウト*********************************/
+@media (max-width: 940px ) {
+  
   .img_box {
     margin-left: 30%;
   }
