@@ -12,7 +12,7 @@
                 <!-- 選択肢/ステータス -->
                 <div class="menu">
                     <!-- 選択肢 -->
-                    <ul class="corner p-4 border-2 border-white">
+                    <ul class="topmenu corner p-4 border-2 border-white">
                         <li id="summarize" class="text-white cursor-pointer">
                             <span id="choose1">▶</span>
                             &nbsp;&nbsp;<a href="countdown">おさらい&nbsp;をはじめる
