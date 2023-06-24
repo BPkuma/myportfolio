@@ -2,10 +2,17 @@
     <slot>
         <!-- カウントダウンタイマーのページ -->        
         <div class="bg-black h-screen text-white">   
-            <div class="container">        
+            <div class="container">  
                 <!-- カウントダウンタイマー・サンプル表示 -->
-                <div class="realsample pt-24">           
-                    <div class="corner p-4 border-2 border-white w-2/5 m-auto">                
+                <div class="realsample ml-5">  
+                    <!--小さい画面用はいorいいえ-->
+                    <div class="yesno_mini invisible">
+                        <div class="yesnochild_mini corner p-4 border-2 border-white w-6/12 ml-5">
+                            <div class="yes_mini cursor-pointer"><span id="yesno_mini_choose1">▶</span>はい</div>
+                            <div class="no_mini cursor-pointer"><span id="yesno_mini_choose2" class="hidden">▶</span>いいえ</div>
+                        </div> 
+                    </div>        
+                    <div class="real corner p-4 border-2 border-white w-2/5">                
                         <div class="text-center">
                             <p><span id="today"></span>は
                             </p>
@@ -13,10 +20,13 @@
                             </p> 
                         </div>
                     </div>
+                    
                 </div>
+            </div>
+            <div class="container">   
 
                 <!--画像エリア-->
-                <div class="img_box flex items-center justify-center">
+                <div class="img_box flex items-center">
                     <!--ジャスコの画像-->
                     <div class="mt-5 images jascoside flex-shrink-0">
                         <img class="jasco w-1/5" src="{{ asset('image_jasco/jasco01.png') }}" alt="ジャスコ">
@@ -47,7 +57,7 @@
                 <!--ジャスコセリフ-->
                 <!--data-dialogues属性にJSON形式にエンコードしたdialoguesを設定-->
                 <div id="dialogues" class="relative cursor-pointer" data-dialogues="{{ json_encode($dialogues) }}">                                    
-                    <div class="corner p-4 border-2 border-white w-2/5 m-auto h-40">                        
+                    <div class="corner p-4 border-2 border-white w-2/5 h-40">                        
                     @foreach($dialogues as $dialogue)       
                             <!--Dialoguesテーブルからセリフ取得-->                       
                             <p id="talk" class="user_name" data-user-name="{{Auth::user()->name ?? 'ななし'}}"></p>
@@ -55,9 +65,7 @@
                         <span class="confirm absolute cursor-pointer flex justify-center">▼</span>                        
                     </div>                     
                 </div>
-                <div>
-                <span class="back_button absolute cursor-pointer flex justify-center">◀もどる</span>
-                </div>
+                <div class="back_button absolute cursor-pointer flex">◀もどる</div>
                 <!--はいorいいえ-->
                 <div class="yesno relative hidden">
                     <div class="yesnochild corner  p-4 border-2 border-white w-6/12 ml-5">
@@ -65,6 +73,8 @@
                         <div class="no cursor-pointer"><span id="yesno_choose2" class="hidden">▶</span>いいえ</div>
                     </div>
                 </div>
+            </div>
+            <div class="container">
                 <!--code_nowコードはじまり-->
                 <div class="codearea pt-20 code_now hidden">           
                     <pre><code class="language-JavaScript">
@@ -247,14 +257,13 @@
                 <!--サンプル表示3の補足見出し（（テキストは都度jsで書き換え））-->
                 <div class="pt-4 w-2/5 supplement">
                     <p class="clear hidden w-2/5"><i class="fa-solid fa-exclamation fa-beat"></i>&nbsp;<span class="clear_text"></span>&nbsp;<i class="fa-solid fa-exclamation fa-beat"></i></p>
+                    <p class="comp hidden w-2/5"><i class="fa-solid fa-star fa-shake text-yellow-500"></i>&nbsp;<span class="clear_text">よびのカウントダウンタイマー完成</span>&nbsp;<i class="fa-solid fa-star fa-shake text-yellow-500"></i></p>
                 </div>
                 <!--解説中にサンプル表示3-->
                 <div class="corner p-4 border-2 border-white w-2/5 sample3 text-center hidden">
                     <p>残り時間<span id="sample_timer3"></span></p>    
-                </div> 
+                </div>
             </div>
-
-            
         </div>
     </slot>
 </x-app-layout>
