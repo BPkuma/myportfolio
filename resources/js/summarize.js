@@ -106,6 +106,7 @@
     const recalc_ok_text = document.querySelector('.recalc_ok_text');
     const clear = document.querySelector('.clear');
     const clear_text = document.querySelector('.clear_text');
+    const comp = document.querySelector('.comp');
     //全てのスライム画像を取得し、定数sImagesに代入
     const sImages = document.querySelectorAll('img.slime'); 
 
@@ -195,14 +196,24 @@
     const confirm = document.querySelector('.confirm');
     //back_button要素を定数back_buttonに代入
     const back_button = document.querySelector('.back_button');
+    //通常画面ようのはい、いいえ選択肢用/////////////////////////////////
     //yesno要素を定数yesnoに代入
     const yesno = document.querySelector('.yesno');
+    //小さい画面用yesno要素を定数yesno_miniに代入
     //yes・no要素を定数yes・noに代入
     const yes = document.querySelector('.yes');
     const no = document.querySelector('.no');
     //はい、いいえ選択肢の▶#yesno_choose1・2要素を定数yesno_choose1・2に代入
     const yesno_choose1 = document.getElementById('yesno_choose1');
     const yesno_choose2 = document.getElementById('yesno_choose2');
+    //小さい画面用のはい、いいえ選択肢用/////////////////////////////////
+    const yesno_mini = document.querySelector('.yesno_mini');
+    const yes_mini = document.querySelector('.yes_mini');
+    const no_mini = document.querySelector('.no_mini');
+    const yesno_mini_choose1 = document.getElementById('yesno_mini_choose1');
+    const yesno_mini_choose2 = document.getElementById('yesno_mini_choose2');
+
+
     //各コードの要素を定数に代入///////////////////////////////////////////////////////
     const code_now = document.querySelector('.code_now');
     const code_goal = document.querySelector('.code_goal');
@@ -249,13 +260,23 @@
                 break;
             //フラグがqなら
             case 'q':
-                //はい、いいえ選択肢表示
-                yesno.classList.remove('hidden');
-                //▼ボタン非表示
-                confirm.classList.add('hidden');
-                //セリフ枠のcursor-pointerを無効に           
-                dialoguesElement.classList.remove('cursor-pointer');
-                dialoguesElement.style.pointerEvents = 'none';     
+                if(window.innerWidth >= 1101) {
+                    //はい、いいえ選択肢表示
+                    yesno.classList.remove('hidden');
+                    //▼ボタン非表示
+                    confirm.classList.add('hidden');
+                    //セリフ枠のcursor-pointerを無効に           
+                    dialoguesElement.classList.remove('cursor-pointer');
+                    dialoguesElement.style.pointerEvents = 'none'; 
+                } else if(window.innerWidth <= 1101) {
+                    //はい、いいえ選択肢表示
+                    yesno_mini.classList.remove('invisible');
+                    //▼ボタン非表示
+                    confirm.classList.add('invisible');
+                    //セリフ枠のcursor-pointerを無効に           
+                    dialoguesElement.classList.remove('cursor-pointer');
+                    dialoguesElement.style.pointerEvents = 'none';
+                }
                 break;
             //フラグがslimeなら、スライム君登場
             case 'slime':                
@@ -354,7 +375,8 @@
                 sample2.classList.add('hidden');
                 appear.classList.add('hidden');
                 recalc_ok.classList.add('hidden');
-                clear_text.textContent = 'よびのカウントダウンタイマー完成';
+                clear.classList.add('hidden');
+                comp.classList.remove('hidden');
                 break;
             //フラグがendなら、トップ画面に戻る
             case 'end':
@@ -477,6 +499,15 @@
                         //code_html表示
                         code_html.classList.remove('hidden');
                         break;
+                    //オーダー番号がフラグsample2のオーダー番号より小さかったら
+                    case order < getOrderNumber(dialogues, 'sample2'):
+                        //sample2非表示
+                        sample2.classList.add('hidden');
+                        //補足見出しrecalc_ok非表示
+                        recalc_ok.classList.add('hidden');
+                        //code_recalc表示
+                        code_recalc.classList.remove('hidden');
+                        break;
                     //オーダー番号がフラグarrangeのオーダー番号より小さかったら
                     case order < getOrderNumber(dialogues, 'arrange'):
                         //補足見出しrecalc_ok_textを書き換え
@@ -487,15 +518,6 @@
                         code_recalc.classList.add('hidden');
                         //sample表示
                         sample.classList.remove('hidden');
-                        break;
-                    //オーダー番号がフラグsample2のオーダー番号より小さかったら
-                    case order < getOrderNumber(dialogues, 'sample2'):
-                        //sample2非表示
-                        sample2.classList.add('hidden');
-                        //補足見出しrecalc_ok非表示
-                        recalc_ok.classList.add('hidden');
-                        //code_recalc表示
-                        code_recalc.classList.remove('hidden');
                         break;
                     //オーダー番号がフラグcode_padstartのオーダー番号より小さかったら
                     case order < getOrderNumber(dialogues, 'code_padstart'):
@@ -515,8 +537,17 @@
                         break;   
                     //オーダー番号がフラグcompleteのオーダー番号より小さかったら
                     case order < getOrderNumber(dialogues, 'complete'):
+                        appear.classList.remove('hidden');
+                        //sample表示
+                        sample.classList.remove('hidden');
+                        recalc_ok.classList.remove('hidden');
+                        //sample2表示
+                        sample2.classList.remove('hidden');
                         //clear_text書き換え
                         clear_text.textContent = 'そろった';
+                        clear.classList.remove('hidden');
+                        //comp非表示
+                        comp.classList.add('hidden');
                         break;                
                 }                
             //current_indexが0なら
@@ -527,7 +558,7 @@
         });
     }
     //はい、いいえ選択肢が存在する場合
-    if(yesno !== null) {
+    if(yesno !== null || yesno_mini !== null) {
         //yesにマウスオーバーしたら
         yes.addEventListener('mouseover', function() {
             //yesno_choose1を表示
@@ -555,6 +586,23 @@
             //▼ボタン表示
             confirm.classList.remove('hidden');
         });
+        //yes_miniがクリックされたら
+        yes_mini.addEventListener('click', function() {
+            //dialoguesElementにcursor-pointerクラスが無い場合
+            if (!dialoguesElement.classList.contains('cursor-pointer')) {
+                //cursor-pointer機能追加
+                dialoguesElement.classList.add('cursor-pointer');
+                dialoguesElement.style.pointerEvents = '';
+            }
+            //次のセリフ表示
+            showDialogue(dialogues[++current_index]);
+            //フラグチェックする
+            handleDialogueFlag(dialogues[current_index].flag);
+            //はい、いいえ選択肢非表示
+            yesno_mini.classList.add('invisible');
+            //▼ボタン表示
+            confirm.classList.remove('invisible');
+        });
         //back_buttonがクリックされたら
         back_button.addEventListener('click', function() { 
             //dialoguesElementにcursor-pointerクラスが無い場合
@@ -573,6 +621,12 @@
 
         //noがクリックされたら
         no.addEventListener('click', function() { 
+            //loop_index = current_index - 1; 
+            console.log(current_index);
+            //固定セリフ          
+            forever();    
+        });
+        no_mini.addEventListener('click', function() { 
             //loop_index = current_index - 1; 
             console.log(current_index);
             //固定セリフ          
