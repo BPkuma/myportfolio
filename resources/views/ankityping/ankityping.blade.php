@@ -21,7 +21,7 @@
     </div>
 
     <fieldset class="text-center mt-8">
-        <legend>アプリオプション</legend>
+        <legend>ゲームオプション</legend>
         <label>
             出題数(<span id="questionNumber">5</span>)
             <input type="range" name="amount" id="slider" min="5" max="24" value="{{$amount}}">
