@@ -10,6 +10,6 @@
     <script>
         const posts = @json($posts);
     </script>
-    <script src="{{ asset('js/AnkiTyping/ankityping.js') }}"></script>
+    <script src="{{ mix('js/AnkiTyping/ankityping.js') }}"></script>
 
 </x-app-layout>

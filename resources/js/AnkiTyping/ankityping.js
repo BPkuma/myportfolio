@@ -1,6 +1,7 @@
 'use strict';
 {
     const matters = posts;
+    console.log(posts);
     let checkTexts = [];
     let container = document.getElementById('container');
     let answer = document.getElementById('answer');
