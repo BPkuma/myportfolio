@@ -19,7 +19,7 @@ h1 {
   margin-top: 10%;
 }
 .menu {
-  width: 30%;
+  width: 35%;
   margin: 0 auto;
   font-size: large;
 }
@@ -106,53 +106,144 @@ div.code-toolbar {
 }
 
 /*************幅1340px以下のレイアウト*********************************/
-@media (max-width: 1330px ) {
+@media (max-width: 1340px ) {
   /*タイトル*/
   h1 {
     padding-top: 1%;
   }
-  /*トップメニュー*/
+  /*はい、いいえ*/
   .yesnochild {
     font-size: small;  
   }
   .yes {
     padding-bottom: 20%;
   }
-
   .codearea {
     padding: 0;
   }
+  /*コードの文字*/
+  div.code-toolbar {
+    margin-left: -28%;
+    margin-top: -1%;
+  }
 }
-/**************幅1100px以下のレイアウト*/
+/**************幅1100px以下のレイアウト*****************/
 @media (max-width: 1100px) {
+  /*上のカウントダウンタイマー*/
   .realsample {
     padding-top: 1%;
   }
   .real {
     margin-top: -4%;
   }
-
+/*戻るボタンを上に*/
   .back_button {
     left: 5%;
     top: 10%;
     font-size: xx-large;
   } 
-
+/*はい、いいえを右上に*/
   .yesnochild_mini {
     font-size: xx-large;
     position: relative;
     left: 80%;
     width: 15%;
   }
-  
+  /*コードの文字*/
+  div.code-toolbar {
+    margin-left: -35%;
+  }
+  /*画像*/
+  .img_box {
+    margin-left: 0;
+  }
+  .images {
+    width: 350px;
+  }
+  .comp {
+    margin-left: -65%;
+  }
 }
-
-
 /*************幅940px以下のレイアウト*********************************/
 @media (max-width: 940px ) {
-  
+  /*画像*/
   .img_box {
-    margin-left: 30%;
+    margin-left: 0;
+  }
+  .images {
+    width: 300px;
+  }
+  .jascoside {
+    margin-right: -15%;
+  }
+  /*セリフ枠*/
+  .talk {
+    height: 200px;
+  }
+  /*コードの文字*/
+  div.code-toolbar {
+    margin-left: -40%;
+  }
+  /*補足見出し*/
+  .comp {
+    margin-left: -70%;
   }
 
+}
+/*/*************幅900px以下のレイアウト*********************************/
+@media (max-width: 900px ) {
+  /*トップメニュー*/
+  .topmenu, #state_data, #run_data, #reference_data {
+    width: 120%;
+  }  
+  /*はい、いいえ選択肢*/
+  .yesnochild_mini {
+    width: 20%;
+    left: 70%;
+  }
+  /*▼ボタン*/
+  .confirm {
+    top: 90%;
+    left: 19%;
+  }
+  /*画像*/
+  .jascoside {
+    margin-right: -10%;
+  }
+  /*コードの文字*/
+  div.code-toolbar {
+    margin-left: -43%;
+  }
+}
+/******************幅750px以下のレイアウト*********************/
+@media (max-width: 750px) {
+  /*トップメニュー*/
+  .topmenu, #state_data, #run_data, #reference_data {
+    width: 130%;
+  }
+  /*カウントダウンタイマー*/
+  .real {
+    margin-top: -10%;
+  }
+  /*はい、いいえ選択肢*/
+  .yesnochild_mini {
+    width: 30%;
+    left: 65%;
+  }
+  /*セリフ枠*/
+  .talk {
+    height: 280px;
+  }
+  /*コード位置*/
+  .code_rewrite {
+    margin-top: 15%;
+  }
+  /*コードの文字*/
+  div.code-toolbar {
+    margin-left: -52%;
+  }
+  /*補足見出し*/
+  .appear, .recalc_ok, .clear {
+    margin-left: -55%;
+  }
 }
