@@ -5,14 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SummarizeController;
 
-Route::get('post', [PostController::class, 'index'])->name('post.index');
-Route::get('post/create', [PostController::class, 'create'])->name('post.create');
-Route::post('post', [PostController::class, 'store'])->name('post.store');
-Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
-Route::get('post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
-Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
-Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
-
+//////初期画面表示///////////////////////
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -27,17 +20,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-/////////////////////JavaScriptまとめ//////////////////////////////////////////
+//////AnkiTyping 問題文のCRUD用/////////////////////////////////
+Route::get('post', [PostController::class, 'index'])->name('post.index');
+Route::get('post/create', [PostController::class, 'create'])->name('post.create');
+Route::post('post', [PostController::class, 'store'])->name('post.store');
+Route::get('post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::patch('post/{post}', [PostController::class, 'update'])->name('post.update');
+Route::delete('post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+//////AnkiTyping 設問数設定用//////////////////////////////////
+Route::post('/typing/game/{amount}', [PostController::class, 'typing'])->name('typing.game');
+//////AnkiTyping ゲーム画面表示////////////////////////////////
+Route::get('/typing', [PostController::class, 'showConsole'])->name('typing');
+
 Route::get('/summarize', [SummarizeController::class, 'summarize'])->name('summarize');
 Route::get('/countdown', [SummarizeController::class, 'countdown'])/* ->middleware('auth') */->name('countdown');
 Route::get('/countdown', [SummarizeController::class, 'index'])->name('index');
 
-////////////////////Ankiタイピング/////////////////////////////////////////////
-Route::get('/typing/game', [PostController::class, 'typing'])->name('tayping.game');
-
-Route::get('/typing', function () {
-    return view('ankityping.ankityping');
-})->name('typing');
 
 ////////////////////こんな漢字/////////////////////////////////////////////
 Route::get('/konnakanji', function(){

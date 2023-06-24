@@ -13,13 +13,15 @@
 
         <!-- Scripts -->
         @vite([
-            'resources/css/app.css', 
-            'resources/js/app.js', 
-            'resources/css/summarize.css', 
+            'resources/css/app.css',
+            'resources/js/app.js',
+            'resources/css/summarize.css',
             'resources/js/summarize.js',
-            'resources/js/jquery-3.6.4.min.js',            
-            'resources/css/prism.css',            
-            'resources/js/prism.js'            
+            'resources/js/jquery-3.6.4.min.js',
+            'resources/css/prism.css',
+            'resources/js/prism.js',
+            'resources/js/AnkiTyping/ankityping.js',
+            'resources/css/AnkiTyping/ankityping.css',
             ])
     </head>
     <body class="font-body antialiased">

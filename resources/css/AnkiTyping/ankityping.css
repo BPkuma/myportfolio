@@ -1,0 +1,101 @@
+@charset "utf-8";
+
+body {
+margin-top: 10px;
+text-align: center;
+color: #63847a;
+user-select: none;
+}
+
+/* 正解文字列に変わる時のアニメーション */
+span {
+transition: all 300ms 0s ease;
+}
+
+#answer {
+margin-bottom: 30px;
+font-size: 70px;
+font-weight: bold;
+color: #40987e;
+letter-spacing: .1em;
+}
+
+#question {
+font-size: 24px;
+text-align: left;
+margin: 0 40px;
+padding: 20px 20px;
+border-radius: 10px;
+}
+
+#hint {
+font-size: 24px;
+text-align: left;
+margin: 20px 40px 20px;
+padding: 20px 20px;
+background-color: lightgray;
+border-radius: 10px;
+opacity: 0;
+}
+
+#message {
+font-size: 24px;
+background: rgba(211, 211, 211, 0.429);
+border-radius: 10px;
+padding: 20px;
+margin: 0 40px;
+}
+
+/* "_"から正解文字列に変わったあとのプロパティ  */
+.add-correct {
+font-size: 0.6em;
+color: #1b463a;
+opacity: .3;
+}
+
+/* 間違えたときのアニメーション */
+.caution {
+display: inline-block;
+animation: buruburu .15s ;
+color: red;
+}
+@keyframes buruburu {
+0%{transform: translate(0px, 0px) rotatez(0deg);}
+20%{transform: translate(2px, 4px) rotatez(3deg);}
+40%{transform: translate(-2px, 2px) rotatez(-3deg);}
+60%{transform: translate(2px, 4px) rotatez(3deg);}
+80%{transform: translate(-2px, 6px) rotatez(-3deg);}
+100%{transform: translate(0px, 0px) rotatez(0deg);}
+}
+
+/* 要素をフワッと表示させる */
+.fadein {
+opacity: 0;
+animation: fadein .7s ease forwards;
+}
+@keyframes fadein {
+100% { opacity: 1;}
+}
+
+#progress {
+margin: 0 40px;
+}
+progress {
+appearance: none;
+-webkit-appearance: none;
+margin-top: 40px;
+width: 100%;
+height: 7px;
+}
+progress::-webkit-progress-bar {
+background-color: lightgray;
+border-radius: 10px;
+}
+progress::-webkit-progress-value {
+background-color: #40987e;
+border-radius: 10px;
+}
+
+#container {
+opacity: 0;
+}
