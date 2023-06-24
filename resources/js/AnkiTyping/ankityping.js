@@ -99,7 +99,7 @@ if(postsElement !== null) {
     }
 
     // ユーザーの入力値(e.key)が正しいものではなかったら、文字を震わせるアニメーションclassをつけて、150ミリ秒後に外す
-    if(checkTexts[0].value !== e.key) {
+    if(checkTexts[0].value !== e.key && value !== null) {
         checkTexts[0].span.classList.add('caution');
         setTimeout(() => {checkTexts[0].span.classList.remove('caution')},150);
         return;
