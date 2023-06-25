@@ -8,9 +8,15 @@ use App\Rules\Hankaku;
 
 class PostController extends Controller
 {
-    public function typing()
+    public function showConsole()
     {
-        $posts = Post::inRandomOrder()->take(5)->get();
+        $amount = 5;
+        return view('ankityping/ankityping', compact('amount'));
+    }
+
+    public function typing(Request $request, $amount)
+    {
+        $posts = Post::inRandomOrder()->take($amount)->get();
         return view('ankityping.typinggame', compact('posts'));
     }
 
@@ -18,8 +24,9 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         $user = auth()->user();
+        // ddd($posts);
         return view('ankityping.questions', compact('posts', 'user'));
     }
 
