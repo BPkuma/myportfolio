@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-base text-lime-700 leading-tight">
+        <h2 class="text-left text-base text-lime-700 leading-tight">
             問題文とその答えを入力して「保存する」ボタンを押して下さい
         </h2>
         <x-input-error class="mb-4" :messages="$errors->all()"/>
         <x-message :message="session('message')" />
     </x-slot>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-left max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mx-4 sm:px-8">
             <form method="post" action="{{route('post.store')}}" enctype="multipart/form-data">
                 @csrf
@@ -18,6 +18,7 @@
                     <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer')}}" placeholder="answer" autofocus>
                     </div>
                 </div>
+                
 
                 <div class="w-full flex flex-col">
                     <label for="question" class="leading-none mt-4">
