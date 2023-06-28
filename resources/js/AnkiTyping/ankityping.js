@@ -1,4 +1,5 @@
 'use strict';
+{
 //#posts要素を定数postsElementに格納
 const postsElement = document.getElementById('posts');
 //postsElementが存在したら
@@ -137,4 +138,5 @@ if(postsElement !== null) {
         }
     }
     });
+  }
 }

@@ -10,7 +10,7 @@
                     </span>
                 </h1>
                 <!-- 選択肢/ステータス -->
-                <div class="menu">
+                <div class="menu text-left">
                     <!-- 選択肢 -->
                     <ul class="topmenu corner p-4 border-2 border-white">
                         <li id="summarize" class="text-white cursor-pointer">
