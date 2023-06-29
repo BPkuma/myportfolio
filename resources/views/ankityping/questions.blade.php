@@ -18,7 +18,7 @@
                     <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer')}}" placeholder="answer" autofocus>
                     </div>
                 </div>
-                
+
 
                 <div class="w-full flex flex-col">
                     <label for="question" class="leading-none mt-4">
@@ -59,10 +59,10 @@
                     @foreach ($posts as $post)
                     <tr class="hover:bg-gray-100 dark:hover:bg-gray-300">
                         <td class="w-2 text-center "><input type="checkbox" @if ($post->is_enabled) checked @endif></td>
-                        <td class="px-6 py-4 whitespace-normal text-sm font-medium text-gray-800 dark:text-gray-500">
+                        <td class="text-left px-6 py-4 whitespace-normal text-sm font-medium text-gray-800 dark:text-gray-500">
                             <div>{{$post->answer}}</div>
                         </td>
-                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-800 dark:text-gray-500">
+                        <td class="text-left px-6 py-4 whitespace-normal text-sm text-gray-800 dark:text-gray-500">
                             <div>{{$post->question}}</div>
                         </td>
 
