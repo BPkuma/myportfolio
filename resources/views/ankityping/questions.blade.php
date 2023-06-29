@@ -12,10 +12,10 @@
                 @csrf
                 <div class="md:flex items-center mt-2">
                     <div class="w-full flex flex-col">
-                    <label for="answaer" class="leading-none mt-4">
+                    <label for="answer" class="leading-none mt-4">
                         タイピングする文字（半角英数字のみ）
                     </label>
-                    <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answwer" value="{{old('answer')}}" placeholder="answer" autofocus>
+                    <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answer" value="{{old('answer')}}" placeholder="answer" autofocus>
                     </div>
                 </div>
 
@@ -95,9 +95,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        'use strict';
-        console.log('hello world');
-    </script>
 </x-app-layout>

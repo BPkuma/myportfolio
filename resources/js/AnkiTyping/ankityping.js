@@ -52,8 +52,8 @@ if(postsElement !== null) {
         hint.textContent = `最初の文字は ${checkTexts[0].value}`;
         setTimeout(() => {
         hint.classList.add('fadein')
-    }, 4000);
-    hint.classList.remove('fadein');
+        }, 4000);
+        hint.classList.remove('fadein');
     }
 
     document.addEventListener('keydown', (e) => {
