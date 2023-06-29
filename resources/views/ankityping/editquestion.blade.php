@@ -13,7 +13,7 @@
                 @method('patch')
                 <div class="md:flex items-center mt-8">
                     <div class="w-full flex flex-col">
-                    <label for="answer" class="font-semibold leading-none mt-4">
+                    <label for="answer" class="text-left font-semibold leading-none mt-4">
                         タイピングする文字（半角アルファベットのみ）
                     </label>
                     <input type="text" name="answer" class="w-auto py-2 placeholder-gray-300 border border-gray-300 rounded-md" id="answer" value="{{old('answer', $post->answer)}}" placeholder="answer" autofocus>
@@ -21,14 +21,14 @@
                 </div>
 
                 <div class="w-full flex flex-col">
-                    <label for="question" class="font-semibold leading-none mt-4">
+                    <label for="question" class="text-left font-semibold leading-none mt-4">
                         問題文
                     </label>
                     <textarea name="question" class="w-auto py-2 border border-gray-300 rounded-md" id="question" cols="30" rows="3">{{old('question', $post->question)}}</textarea>
                 </div>
 
                 <div class="w-full flex flex-col">
-                    <label for="image" class="font-semibold leading-none mt-4">
+                    <label for="image" class="text-left font-semibold leading-none mt-4">
                         画像(1MBまで)
                     </label>
                     @if($post->image)
