@@ -25,7 +25,7 @@
             bg-blue-700 rounded-lg p-5
             hover:bg-blue-500 transition duration-1000
             ">
-        JavaScriptまとめ
+        JavaScriptおさらい
         </a>
         <a href="{{ url('/typing') }}"
             class="
